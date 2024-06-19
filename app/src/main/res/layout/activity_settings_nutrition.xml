@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:theme="@style/AppTheme"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Settings"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/nutrition_settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="40dp"
+                android:background="@color/colorPrimaryDark"
+                android:fillViewport="true"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:id="@+id/labelspinner1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20sp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="meals number"
+                        android:textColor="@color/LigthTextCoor" />
+
+                    <Spinner
+                        android:id="@+id/spn_meal_num"
+                        style="@style/DialogSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/labelspinner1" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:id="@+id/labelspinnerdailyactivity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20sp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="daily activity"
+                        android:textColor="@color/LigthTextCoor" />
+
+                    <Spinner
+                        android:id="@+id/spn_daily_activity"
+                        style="@style/DialogSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/labelspinnerdailyactivity" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:id="@+id/labelspinnertarget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20sp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="target"
+                        android:textColor="@color/LigthTextCoor" />
+
+                    <Spinner
+                        android:id="@+id/spn_target"
+                        style="@style/DialogSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/labelspinnertarget" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlv_weight_target"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:id="@+id/labelspinnerweighttarget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20sp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Weight target"
+                        android:textColor="@color/LigthTextCoor" />
+
+                    <Spinner
+                        android:id="@+id/spn_weight_target"
+                        style="@style/DialogSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/labelspinnerweighttarget" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/r"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone"
+                    tools:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/labelspinneruserexperience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20sp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="experience"
+                        android:textColor="@color/LigthTextCoor" />
+
+                    <Spinner
+                        android:id="@+id/spn_userexperience"
+                        style="@style/DialogSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/labelspinneruserexperience" />
+
+                </RelativeLayout>
+
+                <Switch
+                    android:id="@+id/switchAppSec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="use phone screen lock to keep your app secure"
+                    android:textColor="@color/CPP"
+                    android:textSize="16sp" />
+
+                <Switch
+                    android:id="@+id/switchMealTimes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="use app  for  determine your meals timings"
+                    android:textColor="@color/CPP"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtSendToTimings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:text="To meal timings page ->"
+                    android:textColor="#2196F3"
+                    android:visibility="gone"
+                    tools:visibility="gone" />
+
+                <Switch
+                    android:id="@+id/switchDailyTip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="get daily fitness tip/adivce from Omri"
+                    android:textColor="@color/CPP"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btn_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="Next"
+                    android:background="@color/colorPrimaryDark"
+                    android:theme="@style/AppTheme"
+                    style="@style/Widget.AppCompat.ImageButton"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

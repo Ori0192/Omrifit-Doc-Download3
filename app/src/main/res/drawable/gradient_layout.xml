@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#4040A2"
+    android:endColor="#000000"
+    android:angle="270"/>         <!-- כיוון המעבר (0 = מעלה למטה, 90 = שמאל לימין, 270 = מטה למעלה) -->
+</shape>

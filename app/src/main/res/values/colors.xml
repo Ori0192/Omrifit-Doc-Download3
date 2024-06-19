@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#20243e</color>
+    <color name="colorPrimaryDark">#1e223b</color>
+    <color name="colorAccent">#FFF</color>
+    <color name="PrimaryTextCoor">#ffffff</color>
+    <color name="LigthTextCoor">#b0b2c2</color>
+    <color name="colorWistful">#a2a2d2</color>
+    <color name="SecondaryTextCoor">#1a1a31</color>
+    <color name="white">#fff</color>
+    <color name="dark">#262a41</color>
+    <color name="fordTextColor">#d1cece</color>
+    <color name="blue">#6d5fce</color>
+    <color name="darkblue">#353b58</color>
+    <color name="lineColor">#7d8090</color>
+    <color name="blueTextCoor">#3fb7d9</color>
+    <color name="whiteTextCoor">#FFF</color>
+    <color name="lavender">#C26BD1</color>
+    <color name="blueblack">#0F1849</color>
+    <color name="tanaccent">#6F579A</color>
+    <color name="black">#000000</color>
+    <color name="R">#D88811</color>
+    <color name="CPP">#FFF</color>
+    <color name="color_two">#fff</color>
+    <color name="Python">#ffff</color>
+
+    <color name="blue_color_picker">#0066FF</color>
+    <color name="brown_color_picker">#AF593E</color>
+    <color name="green_color_picker">#01A368</color>
+    <color name="orange_color_picker">#FF861F</color>
+    <color name="red_color_picker">#ED0A3F</color>
+    <color name="red_orange_color_picker">#FF3F34</color>
+    <color name="sky_blue_color_picker">#76D7EA</color>
+    <color name="violet_color_picker">#8359A3</color>
+    <color name="yellow_color_picker">#FBE870</color>
+    <color name="yellow_green_color_picker">#C5E17A</color>
+    <color name="tool_bg">#151414</color>
+    <color name="semi_black_transparent">#99000000</color>
+
+</resources>

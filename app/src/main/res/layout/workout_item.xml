@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/workout_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blueTextCoor"
+    android:foregroundGravity="center_vertical|center"
+    android:gravity="center"
+    android:shadowRadius="10"
+    android:text="A"
+    android:textSize="30sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/workout"
+        android:title="workout"/>
+<!--    <item android:id="@+id/cardio"-->
+<!--        android:title="cardio"/>-->
+    <item android:id="@+id/calendar_workout"
+        android:title="workout dates"/>
+</menu>

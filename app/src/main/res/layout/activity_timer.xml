@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A1A1A"
+    >
+
+    <!-- Back Button -->
+
+    <!-- Next Button -->
+
+    <!-- Linear Layout for buttons at the bottom -->
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- First row of buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn20"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:text="20"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:theme="@style/AppTheme"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/btn30"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:text="30"
+                android:theme="@style/AppTheme"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/btn45"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:text="45"
+                android:theme="@style/AppTheme"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+
+        <!-- Second row of buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn60"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:text="60"
+                android:theme="@style/AppTheme"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/btn90"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/round_button"
+                android:text="90"
+                android:theme="@style/AppTheme"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/btn120"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:theme="@style/AppTheme"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:background="@drawable/round_button"
+                android:text="120"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Timer layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:indeterminateOnly="false"
+            android:progress="50"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:30"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/progressBar" />
+
+        <!-- Button Layout -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBar">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/round_button"
+                android:text="Cancel"
+                android:textColor="#FFFFFF"
+                android:theme="@style/AppTheme"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:text="START"
+                android:theme="@style/AppTheme"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnback"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/round_button"
+            android:text="-5"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:theme="@style/AppTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_marginBaseline="16dp" />
+
+        <Button
+            android:id="@+id/btnnext"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/round_button"
+            android:text="+5"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:theme="@style/AppTheme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_marginBaseline="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

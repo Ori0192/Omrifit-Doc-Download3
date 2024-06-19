@@ -1,0 +1,3158 @@
+@startuml
+
+    class NetworkConnection {
+        - Context context
+        - ConnectivityManager connectivityManager
+        - ConnectivityManager.NetworkCallback networkConnectionCallback
+        - BroadcastReceiver networkReceiver
+        --
+        + NetworkConnection(Context context)
+        + static synchronized NetworkConnection getInstance(Context context): NetworkConnection
+        + onActive(): void
+        + onInactive(): void
+        + private ConnectivityManager.NetworkCallback getConnectivityManagerCallback(): ConnectivityManager.NetworkCallback
+        + private boolean networkIsStrong(): boolean
+        + private void updateNetworkConnection(): void
+        + private class BroadcastReceiver {
+            + void onReceive(Context context, Intent intent)
+
+    }
+
+    class Omrifit {
+        + void onCreate(): void
+        + static Omrifit? omrifit
+        + static final String TAG
+    }
+
+    class PexelsService {
+        + searchPhotos(query: String): Call<PexelsResponse>
+    }
+
+    class PexelsResponse {
+        List<Photo> photos
+        class Photo {
+            Src src
+            class Src {
+                String original
+
+
+    }
+
+    interface Recyclerview_Interface {
+        + void onitemclick(int position)
+        + void onitemclick(int position, TextView t, RecyclerView r)
+        + void onclick(int position)
+    }
+
+    class TrainYourBrainActivity {
+        - DrawerLayout drawerLayout
+        - ActionBarDrawerToggle toggle
+        - ImageView imageView
+        --
+        + void onCreate(Bundle savedInstanceState)
+    }
+
+    NetworkConnection --> LiveData
+    NetworkConnection --> ConnectivityManager
+    NetworkConnection --> ConnectivityManager.NetworkCallback
+    NetworkConnection --> BroadcastReceiver
+
+    Omrifit --> Application
+
+    PexelsService --> Retrofit
+    PexelsService --> PexelsResponse
+
+    PexelsResponse --> List
+    PexelsResponse --> Photo
+    PexelsResponse.Photo --> Src
+
+    TrainYourBrainActivity --> AppCompatActivity
+    TrainYourBrainActivity --> DrawerLayout
+    TrainYourBrainActivity --> ActionBarDrawerToggle
+    TrainYourBrainActivity --> ImageView
+    TrainYourBrainActivity --> Toolbar
+    TrainYourBrainActivity --> NavigationView
+    TrainYourBrainActivity --> ChatViewModel
+    TrainYourBrainActivity --> ChatResponseCallback
+    TrainYourBrainActivity --> Retrofit
+    TrainYourBrainActivity --> GsonConverterFactory
+    TrainYourBrainActivity --> PexelsService
+    TrainYourBrainActivity --> Glide
+    TrainYourBrainActivity --> SpannableString
+    TrainYourBrainActivity --> SpannableStringBuilder
+    TrainYourBrainActivity --> Spanned
+    TrainYourBrainActivity --> ClickableSpan
+    TrainYourBrainActivity --> ForegroundColorSpan
+    TrainYourBrainActivity --> StyleSpan
+    TrainYourBrainActivity --> LinkMovementMethod
+    TrainYourBrainActivity --> Intent
+    TrainYourBrainActivity --> Uri
+
+
+
+
+    class CommunityMainFragment {
+        + onCreate(@Nullable Bundle savedInstanceState): void
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + onCreateOptionsMenu(Menu menu, MenuInflater inflater): void
+        - replacefragemant(Fragment fragment): void
+    }
+
+    class FriendsFragment {
+        - RecyclerView recyclerViewFriends
+        - RecyclerView recyclerViewSearch
+        - EditText searchEditText
+        - Rv_Adapter_for_user_item adapterFriends
+        - Rv_Adapter_for_user_item adapterSearch
+        - DatabaseReference myRef
+        - ArrayList<ProfileInfo> friendsList
+        - ArrayList<ProfileInfo> searchList
+        - View searchPage
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + initializeUI(View view): void
+        + loadFriends(): void
+        + performSearch(String query): void
+        + loadProfileInfo(String userId, Rv_Adapter_for_user_item adapter, ArrayList<ProfileInfo> list): void
+    }
+
+    class GroupFragment {
+        - RecyclerView recyclerView
+        - RecyclerView rv_group_members
+        - EditText message_edt_text
+        - ArrayList<Message> messageList
+        - MessageAdapter messageAdapter
+        - ArrayList<ProfileInfo> groupMembers
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference groupRef
+        - DatabaseReference myRef
+        - Button suggestion1
+        - Button suggestion2
+        - Button suggestion3
+        - Button leaveGroup
+        - CardView cd_group
+        - Bitmap bitmapToSend
+        - ImageButton addImageButton
+        - TextView groupName
+        - ConstraintLayout ctl
+        - ImageView imageView
+        - LinearLayout suggestionsLayout
+        --
+        + onCreate(@Nullable Bundle savedInstanceState): void
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + setUpRvForGroupMembers(ArrayList<ProfileInfo> profileInfos): void
+        + loadGroup(): void
+        + showSearchDialog(ArrayList<String> groups): void
+        + onCreateOptionsMenu(Menu menu, MenuInflater inflater): void
+        + addtochat(String response): void
+        + loadProfileInfo(String userId): void
+        + setuprecyclerview(ArrayList<Message> messageList): void
+        + scrollToLastUnreadMessage(): void
+        + suggest(ArrayList<Message> messageList): void
+        + setupAddImageButton(): void
+        + openCamera(): void
+        + openGallery(): void
+        + clear(): void
+        + onActivityResult(int requestCode, int resultCode, Intent data): void
+    }
+
+    class RequestsFragment {
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        - ArrayList<String> requests
+        - RecyclerView recyclerView
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + setuprecyclerview(ArrayList<String> requests): void
+    }
+
+    CommunityMainFragment --> Fragment
+    CommunityMainFragment --> FragmentManager
+    CommunityMainFragment --> FragmentTransaction
+    CommunityMainFragment --> BottomNavigationView
+    CommunityMainFragment --> GroupFragment
+    CommunityMainFragment --> FriendsFragment
+    CommunityMainFragment --> RequestsFragment
+
+    FriendsFragment --> RecyclerView
+    FriendsFragment --> EditText
+    FriendsFragment --> Rv_Adapter_for_user_item
+    FriendsFragment --> DatabaseReference
+    FriendsFragment --> ArrayList
+    FriendsFragment --> View
+    FriendsFragment --> FirebaseAuth
+    FriendsFragment --> FirebaseUser
+
+    GroupFragment --> RecyclerView
+    GroupFragment --> EditText
+    GroupFragment --> ArrayList
+    GroupFragment --> MessageAdapter
+    GroupFragment --> FirebaseAuth
+    GroupFragment --> FirebaseUser
+    GroupFragment --> FirebaseDatabase
+    GroupFragment --> DatabaseReference
+    GroupFragment --> Button
+    GroupFragment --> CardView
+    GroupFragment --> Bitmap
+    GroupFragment --> ImageButton
+    GroupFragment --> TextView
+    GroupFragment --> ConstraintLayout
+    GroupFragment --> ImageView
+    GroupFragment --> LinearLayout
+
+    RequestsFragment --> FirebaseAuth
+    RequestsFragment --> FirebaseUser
+    RequestsFragment --> FirebaseDatabase
+    RequestsFragment --> DatabaseReference
+    RequestsFragment --> ArrayList
+    RequestsFragment --> RecyclerView
+
+
+
+    class Ad_BodyMeasure {
+        - LayoutInflater mInflater
+        - List<BodyMeasure> data
+        - Context mContext
+        --
+        + Ad_BodyMeasure(Context context, List<BodyMeasure> data)
+        + onCreateViewHolder(ViewGroup parent, int i): ViewHolder
+        + onBindViewHolder(ViewHolder viewHolder, int i): void
+        + getItemCount(): int
+        --
+        class ViewHolder {
+            - TextView dateTextView
+            - TextView weightTextView
+            --
+            + ViewHolder(View itemView)
+
+    }
+
+    class ExerciseAdapter {
+        - ArrayList<Exercise> exerciseList
+        - Context context
+        - int muscleposition
+        - String workout_type
+        - DatabaseReference myRef
+        --
+        + ExerciseAdapter(Context context, ArrayList<Exercise> exerciseList, String workout_type, int muscleposition)
+        + onCreateViewHolder(ViewGroup parent, int viewType): ExerciseViewHolder
+        + onBindViewHolder(ExerciseViewHolder holder, int position): void
+        + getItemCount(): int
+        - setupSetEditText(ExerciseViewHolder holder, int position): void
+        - setupDeleteButton(ExerciseViewHolder holder, int position): void
+        - showKeyboard(View view): void
+        - hideKeyboard(View view): void
+        --
+        class ExerciseViewHolder {
+            - TextView tvExerciseName
+            - EditText tvSets
+            --
+            + ExerciseViewHolder(View itemView)
+
+    }
+    class SignupActivity {
+            - EditText edtEmail
+            - EditText edtPassword
+            - EditText edtSecondPassword
+            - Button btnSignup
+            - FirebaseAuth mAuth
+            - ProgressDialog verificationDialog
+            - Handler handler
+            - ImageView imgOmri
+            --
+            + onCreate(Bundle savedInstanceState): void
+            - initializeUI(): void
+            - setupPasswordFocusChangeListener(): void
+            - setupPolicyLinks(): void
+            - setupSignupButtonListener(): void
+            - validateInput(String email, String password, String confirmPassword): boolean
+            - isEmailValid(String email): boolean
+            - assessPasswordStrength(String password): int
+            - performSignup(String email, String password): void
+            - sendVerificationEmail(): void
+            - showVerificationDialog(): void
+            - checkEmailVerification(FirebaseUser user): void
+            - proceedToNextScreen(): void
+
+
+
+
+    }
+
+
+    class Exersice_Recyclerview_Adapter {
+        - Context context
+        - ArrayList<Exercise> exercises
+        - Recyclerview_Interface recyclerviewInterface
+        --
+        + Exersice_Recyclerview_Adapter(Context context, ArrayList<Exercise> exercises, Recyclerview_Interface recyclerviewInterface)
+        + onCreateViewHolder(ViewGroup parent, int viewType): MyViewHolder
+        + onBindViewHolder(MyViewHolder holder, int position): void
+        + getItemCount(): int
+        + removeItem(int position): void
+        --
+        class MyViewHolder {
+            - ImageView imageView
+            - TextView txt_name
+            - TextView txt_target
+            - TextView txt_repetitions
+            - TextView txt_askOmri
+            --
+            + MyViewHolder(View itemView, Recyclerview_Interface recyclerviewInterface)
+
+    }
+
+
+
+    class MediaAdapter {
+        - LayoutInflater mInflater
+        - List<MediaItem> mediaList
+        - Context mContext
+        - boolean isme
+        - String anotherId
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        --
+        + MediaAdapter(Context context, List<MediaItem> mediaList, boolean isme, String anotherId)
+        + getItemViewType(int position): int
+        + onCreateViewHolder(ViewGroup parent, int viewType): RecyclerView.ViewHolder
+        + onBindViewHolder(RecyclerView.ViewHolder holder, int position): void
+        + getItemCount(): int
+        + setupVideoViewHolder(VideoViewHolder holder, MediaItem item, int position): void
+        + setupImageViewHolder(ImageViewHolder holder, MediaItem item, int position): void
+        + updateLikedStatus(CircleImageView btnStatus, int position): void
+        + toggleLikeStatus(CircleImageView btnStatus, int position): void
+        + isLiked(int position, LikedStatusListener listener): void
+        --
+        class ImageViewHolder {
+            - ImageView imageView
+            - CircleImageView btn_status
+            --
+            + ImageViewHolder(View itemView)
+
+
+        class VideoViewHolder {
+            - VideoView videoView
+            - CircleImageView btn_status
+            --
+            + VideoViewHolder(View itemView)
+
+
+        interface LikedStatusListener {
+            + void onStatusChecked(boolean isLiked)
+
+    }
+
+    class MessageAdapter {
+        - List<Message> messageList
+        - Context context
+        - FirebaseUser user
+        - ChatViewModel viewModel
+        - FirebaseDatabase database
+        - int lastUnreadMessagePosition
+        - boolean isGroup
+        --
+        + MessageAdapter(Context context, List<Message> messageList, boolean isGroup)
+        + onCreateViewHolder(ViewGroup parent, int viewType): MyViewHolder
+        + onBindViewHolder(MyViewHolder holder, int position): void
+        + getItemCount(): int
+        + getLastUnreadMessagePosition(): int
+        + setUserDetails(String userId, TextView sentByTextView): void
+        + formatTimestamp(long timestamp): String
+        --
+        class MyViewHolder {
+            - LinearLayout leftChatView
+            - LinearLayout rightChatView
+            - TextView leftChatTextView
+            - TextView rightChatTextView
+            - TextView sentByRight
+            - TextView sentByLeft
+            - TextView sentTimeRight
+            - TextView sentTimeLeft
+            - ImageView leftImage
+            - ImageView rightImage
+            - CircleImageView leftImageProfile
+            - CircleImageView rightImageProfile
+            --
+            + MyViewHolder(View itemView)
+            + configureView(Message message, boolean isCurrentUser, int position): void
+            + configureRightView(Message message, int position): void
+            + configureLeftView(Message message, int position): void
+
+    }
+
+    class Rv_Adapter_for_user_item {
+        - List<ProfileInfo> users
+        - Context context
+        - Recyclerview_Interface recyclerviewInterface
+        --
+        + Rv_Adapter_for_user_item(List<ProfileInfo> users, Context context, Recyclerview_Interface recyclerviewInterface)
+        + onCreateViewHolder(ViewGroup parent, int viewType): UserViewHolder
+        + onBindViewHolder(UserViewHolder holder, int position): void
+        + getItemCount(): int
+        --
+        class UserViewHolder {
+            - CircleImageView profileImageView
+            - TextView userNameTextView
+            - TextView emailTextView
+            --
+            + UserViewHolder(View itemView)
+
+    }
+
+    interface ProductCheckCallback {
+        + void onProductChecked(String productName, boolean isProductOk)
+
+
+
+
+
+    class FirstFragment {
+        - FragmentFirstBinding binding
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + onViewCreated(View view, Bundle savedInstanceState): void
+        + onDestroyView(): void
+    }
+
+    class SecondFragment {
+        - FragmentSecondBinding binding
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + onViewCreated(View view, Bundle savedInstanceState): void
+        + onDestroyView(): void
+    }
+
+    class ChatFragment {
+        - RecyclerView recyclerView
+        - EditText messageEditText
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        - List<Message> messageList
+        - MessageAdapter messageAdapter
+        - String anotherId
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + initializeUI(View view): void
+        + loadMessages(): void
+        + sendMessage(): void
+        + scrollToLastUnreadMessage(): void
+        + setupRecyclerView(ArrayList<Message> messages): void
+        + getAnotherUserProfileInfo(String userId): void
+    }
+
+    class ExerciseFragment {
+        - RecyclerView recyclerView
+        - Button startWorkoutButton
+        - TextView workoutTypeTextView
+        - Context context
+        - String workout_type
+        - DatabaseReference myRef
+        - ArrayList<Exercise> exerciseList
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + initializeUI(View view): void
+        + loadExercises(): void
+        + setupRecyclerView(ArrayList<Exercise> exercises): void
+        + startWorkout(): void
+    }
+
+    class ProfileFragment {
+        - CircleImageView profileImageView
+        - TextView nameTextView
+        - TextView emailTextView
+        - TextView heightTextView
+        - TextView weightTextView
+        - TextView ageTextView
+        - TextView goalTextView
+        - TextView genderTextView
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + loadProfileInfo(): void
+        + editProfile(): void
+
+
+    FirstFragment --> FragmentFirstBinding
+    SecondFragment --> FragmentSecondBinding
+}
+
+
+    class BodyMeasure {
+        - double weight
+        - double height
+        - double bodyFat
+        - double muscleMass
+        - String date
+        --
+        + BodyMeasure(double weight, double height, double bodyFat, double muscleMass, String date)
+        + getWeight(): double
+        + getHeight(): double
+        + getBodyFat(): double
+        + getMuscleMass(): double
+        + getDate(): String
+    }
+
+    class Exercise {
+        - String name
+        - String targetMuscle
+        - int repetitions
+        - int sets
+        - int restTime
+        - int duration
+        --
+        + Exercise(String name, String targetMuscle, int repetitions, int sets, int restTime, int duration)
+        + getName(): String
+        + getTargetMuscle(): String
+        + getRepetitions(): int
+        + getSets(): int
+        + getRestTime(): int
+        + getDuration(): int
+    }
+
+    class Group {
+        - String groupName
+        - List<Message> messages
+        - List<ProfileInfo> members
+        - String groupId
+        --
+        + Group(String groupName, List<Message> messages, List<ProfileInfo> members, String groupId)
+        + getGroupName(): String
+        + getMessages(): List<Message>
+        + getMembers(): List<ProfileInfo>
+        + getGroupId(): String
+    }
+
+    class Meal {
+        - String name
+        - List<String> ingredients
+        - int calories
+        - int protein
+        - int carbs
+        - int fat
+        --
+        + Meal(String name, List<String> ingredients, int calories, int protein, int carbs, int fat)
+        + getName(): String
+        + getIngredients(): List<String>
+        + getCalories(): int
+        + getProtein(): int
+        + getCarbs(): int
+        + getFat(): int
+    }
+
+    class MediaItem {
+        - String url
+        - String type
+        - long timestamp
+        - boolean isLiked
+        - String userId
+        --
+        + MediaItem(String url, String type, long timestamp, boolean isLiked, String userId)
+        + getUrl(): String
+        + getType(): String
+        + getTimestamp(): long
+        + isLiked(): boolean
+        + getUserId(): String
+    }
+
+    class Message {
+        - String content
+        - String senderId
+        - long timestamp
+        - boolean isRead
+        - boolean isImage
+        - boolean isVideo
+        - String imageUrl
+        - String videoUrl
+        --
+        + Message(String content, String senderId, long timestamp, boolean isRead, boolean isImage, boolean isVideo, String imageUrl, String videoUrl)
+        + getContent(): String
+        + getSenderId(): String
+        + getTimestamp(): long
+        + isRead(): boolean
+        + isImage(): boolean
+        + isVideo(): boolean
+        + getImageUrl(): String
+        + getVideoUrl(): String
+    }
+
+    class ProfileInfo {
+        - String userId
+        - String userName
+        - String email
+        - String profileImageUrl
+        - String height
+        - String weight
+        - String age
+        - String goal
+        - String gender
+        --
+        + ProfileInfo(String userId, String userName, String email, String profileImageUrl, String height, String weight, String age, String goal, String gender)
+        + getUserId(): String
+        + getUserName(): String
+        + getEmail(): String
+        + getProfileImageUrl(): String
+        + getHeight(): String
+        + getWeight(): String
+        + getAge(): String
+        + getGoal(): String
+        + getGender(): String
+    }
+
+    class Task {
+        - String title
+        - String description
+        - boolean isCompleted
+        - long dueDate
+        --
+        + Task(String title, String description, boolean isCompleted, long dueDate)
+        + getTitle(): String
+        + getDescription(): String
+        + isCompleted(): boolean
+        + getDueDate(): long
+    }
+
+    class Workout {
+        - String name
+        - List<Exercise> exercises
+        - int duration
+        --
+        + Workout(String name, List<Exercise> exercises, int duration)
+        + getName(): String
+        + getExercises(): List<Exercise>
+        + getDuration(): int
+    }
+
+
+
+
+    class ChatViewModel {
+        - MutableLiveData<List<Message>> messages
+        - MutableLiveData<String> errorMessage
+        - ChatRepository repository
+        --
+        + ChatViewModel()
+        + getMessages(): LiveData<List<Message>>
+        + sendMessage(Message message): void
+        + loadMessages(): void
+        + onError(String error): void
+
+
+    class ChatData {
+        - MutableLiveData<List<Message>> messages
+        - MutableLiveData<String> errorMessage
+        --
+        + ChatData()
+        + getMessages(): LiveData<List<Message>>
+        + getErrorMessage(): LiveData<String>
+        + setMessages(List<Message> messages): void
+        + setErrorMessage(String error): void
+
+}
+class ProductsEditorFragment {
+        + onCreate(@Nullable Bundle savedInstanceState): void
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        - initializeUI(View view): void
+        - setUpSpinners(): void
+        - setEventListeners(): void
+        - addProduct(): void
+        - determineCategory(int fatGrams, int carbsGrams, int proteinGrams): void
+        - checkAndAddProduct(Product product, String name): void
+        - showDetails(String category): void
+        - updateRecyclerView(ArrayList<Product> products): void
+        - clearFields(): void
+
+
+    ProductsEditorFragment --> LayoutInflater
+    ProductsEditorFragment --> ViewGroup
+    ProductsEditorFragment --> Bundle
+    ProductsEditorFragment --> View
+    ProductsEditorFragment --> EditText
+    ProductsEditorFragment --> Spinner
+    ProductsEditorFragment --> Button
+    ProductsEditorFragment --> CardView
+    ProductsEditorFragment --> RecyclerView
+    ProductsEditorFragment --> FloatingActionButton
+    ProductsEditorFragment --> DatabaseReference
+    ProductsEditorFragment --> ProductRecyclerViewAdapter
+    ProductsEditorFragment --> ArrayList
+    ProductsEditorFragment --> Product
+
+    ProductsEditorFragment --> DataSnapshot
+    ProductsEditorFragment --> DatabaseError
+    ProductsEditorFragment --> ValueEventListener
+}
+
+    class FirebaseAuth {
+        + createUserWithEmailAndPassword(String email, String password): Task<AuthResult>
+        + signInWithEmailAndPassword(String email, String password): Task<AuthResult>
+        + signOut(): void
+    }
+
+    class FirebaseUser {
+        + getEmail(): String
+        + getUid(): String
+    }
+
+    class FirebaseDatabase {
+        + getReference(String path): DatabaseReference
+    }
+
+    class DatabaseReference {
+        + addListenerForSingleValueEvent(ValueEventListener listener): void
+        + setValue(Object value): Task<Void>
+        + push(): DatabaseReference
+        + child(String pathString): DatabaseReference
+    }
+
+    class ValueEventListener {
+        + onDataChange(DataSnapshot snapshot): void
+        + onCancelled(DatabaseError error): void
+    }
+
+    class DataSnapshot {
+        + getValue(Class valueType): Object
+        + getChildren(): Iterable<DataSnapshot>
+        + getKey(): String
+    }
+
+    class DatabaseError {
+        + getMessage(): String
+    }
+
+   class ExerciseEditorFragment {
+        + void onCreate(@Nullable Bundle savedInstanceState)
+        + View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        - void initializeUI(View view)
+        - void setupSpinners()
+        - List<String> getExerciseCategories()
+        - void setupEventListeners()
+        - void createExerciseRequest()
+        - void handleExerciseRequest(String exercise)
+        - void createSnackBar(String exercise)
+        - void fadeOutSnackbar(View view)
+        + void addExercise(String name, String target, String repetitions, String instructions)
+        - static String normalizeString(String str)
+        + void showDetails(String choice)
+        - void updateRecyclerView(ArrayList<Exercise> exercises)
+        + void ClickOnce(int position)
+        + void onclick(int position)
+    }
+
+    ExerciseEditorFragment --> LayoutInflater
+    ExerciseEditorFragment --> ViewGroup
+    ExerciseEditorFragment --> Bundle
+    ExerciseEditorFragment --> View
+    ExerciseEditorFragment --> Spinner
+    ExerciseEditorFragment --> RecyclerView
+    ExerciseEditorFragment --> FloatingActionButton
+    ExerciseEditorFragment --> ArrayList
+    ExerciseEditorFragment --> DatabaseReference
+    ExerciseEditorFragment --> Exercise
+    ExerciseEditorFragment --> FirebaseAuth
+    ExerciseEditorFragment --> FirebaseUser
+    ExerciseEditorFragment --> String
+    ExerciseEditorFragment --> DataSnapshot
+    ExerciseEditorFragment --> DatabaseError
+    ExerciseEditorFragment --> ValueEventListener
+    ExerciseEditorFragment --> List
+    ExerciseEditorFragment --> Retrofit
+    ExerciseEditorFragment --> GsonConverterFactory
+    ExerciseEditorFragment --> PexelsService
+    ExerciseEditorFragment --> PexelsResponse
+    ExerciseEditorFragment --> Handler
+    ExerciseEditorFragment --> Snackbar
+
+    ExerciseEditorFragment -up-|> Fragment
+    interface FilterListener {
+            + void onFilterSelected(PhotoFilter photoFilter)
+        }
+
+        FilterListener --> PhotoFilter
+
+    class UserExpand {
+        - CircleImageView img_user_item
+        --
+        + onCreate(Bundle savedInstanceState): void
+        - setupui(): void
+        - replacefragemant(Fragment fragment): void
+    }
+
+    class UserExpandChatFragment {
+        - RecyclerView recyclerView
+        - EditText message_edt_text
+        - ArrayList<Message> messageList
+        - MessageAdapter messageAdapter
+        - CardView cardViewforfriendshpirequest
+        - TextInputLayout cardViewchat
+        - boolean hisfriend
+        - ImageButton addImageButton
+        - Button suggestion1
+        - Button suggestion2
+        - Button suggestion3
+        - ImageView imageView
+        - Bitmap bitmapToSend
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference chatref
+        - DatabaseReference myref
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + onActivityResult(int requestCode, int resultCode, Intent data): void
+        + addtochat(String response): void
+        + setuprecyclerview(ArrayList<Message> messageList): void
+        + scrollToLastUnreadMessage(): void
+        + suggest(ArrayList<Message> messageList): void
+        + setupAddImageButton(): void
+        + openCamera(): void
+        + openGallery(): void
+        + clear(): void
+        - openChat(ProfileInfo profileInfo): void
+        - showFriendshipRequestOption(ProfileInfo profileInfo, DatabaseReference friendref, View view): void
+    }
+
+    class UserExpandGallery {
+        - RecyclerView recyclerView
+        - MediaAdapter adapter
+        - ArrayList<MediaItem> mediaList
+        - FirebaseAuth mAuth
+        - FirebaseStorage storage
+        - StorageReference storageRef
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + getMedia(ProfileInfo profileInfo): void
+        + setUpRv(ArrayList<MediaItem> mediaItems, ProfileInfo profileInfo): void
+        + addMediaFromFolder(String folderPath): void
+    }
+
+    UserExpand --> Fragment
+    UserExpandChatFragment --> Fragment
+    UserExpandGallery --> Fragment
+
+    UserExpandChatFragment --> ProfileInfo
+    UserExpandChatFragment --> MessageAdapter
+    UserExpandChatFragment --> Message
+    UserExpandGallery --> ProfileInfo
+    UserExpandGallery --> MediaAdapter
+    UserExpandGallery --> MediaItem
+    UserExpandGallery --> StorageReference
+
+
+
+    class BodyMeasureActivity {
+        - RecyclerView recyclerView
+        - Ad_BodyMeasure adapter
+        - List<BodyMeasure> data
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        --
+        + onCreate(Bundle savedInstanceState): void
+        + replaceFragment(Fragment fragment): void
+    }
+
+    class FatMeasureFragment {
+        - EditText ageInput
+        - EditText weightInput
+        - EditText heightInput
+        - EditText neckInput
+        - EditText chestInput
+        - EditText abdomenInput
+        - EditText ankleInput
+        - EditText bicepsInput
+        - EditText wristInput
+        - Button predictButton
+        - MyModelPredictor predictor
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + performPrediction(): void
+    }
+
+    class MyModelPredictorActivity {
+        - EditText ageInput
+        - EditText weightInput
+        - EditText heightInput
+        - EditText neckInput
+        - EditText chestInput
+        - EditText abdomenInput
+        - EditText ankleInput
+        - EditText bicepsInput
+        - EditText wristInput
+        - Button predictButton
+        - MyModelPredictor predictor
+        --
+        + onCreate(Bundle savedInstanceState): void
+        + performPrediction(): void
+    }
+
+    class PulseMonitorActivity {
+        - SensorManager sensorManager
+        - Sensor heartRateSensor
+        - TextView pulseTextView
+        --
+        + onCreate(Bundle savedInstanceState): void
+        + onSensorChanged(SensorEvent event): void
+        + onAccuracyChanged(Sensor sensor, int accuracy): void
+        + onPause(): void
+        + onResume(): void
+    }
+
+    class WeightMeasureFragment {
+        - RecyclerView recyclerView
+        - Ad_BodyMeasure adapter
+        - List<BodyMeasure> data
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + updateRecyclerView(List<BodyMeasure> data): void
+    }
+
+    BodyMeasureActivity --> Fragment
+    BodyMeasureActivity --> WeightMeasureFragment
+    BodyMeasureActivity --> FatMeasureFragment
+    BodyMeasureActivity --> Ad_BodyMeasure
+    BodyMeasureActivity --> NetworkConnection
+    BodyMeasureActivity --> Glide
+
+    FatMeasureFragment --> MyModelPredictor
+
+    MyModelPredictorActivity --> MyModelPredictor
+
+    WeightMeasureFragment --> BodyMeasure
+    WeightMeasureFragment --> Ad_BodyMeasure
+    WeightMeasureFragment --> FirebaseAuth
+    WeightMeasureFragment --> FirebaseUser
+    WeightMeasureFragment --> FirebaseDatabase
+    WeightMeasureFragment --> DatabaseReference
+
+
+
+    class GalleryActivity {
+        - RecyclerView recyclerView
+        - MediaAdapter adapter
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseStorage storage
+        - StorageReference storageRef
+        - ArrayList<MediaItem> mediaItems
+        - String mediaPrivacy
+        - ProgressBar uploadProgressBar
+        - CardView cardViewUpload
+        - Intent intent
+        --
+        + onCreate(Bundle savedInstanceState): void
+        + setUpRv(ArrayList<MediaItem> mediaItems): void
+        + getMedia(): void
+        + addMediaFromFolder(String folderPath): void
+        + openMediaSelector(): void
+        + selectMediaType(): void
+        + selectMediaFromGallery(String mediaType): void
+        + uploadMedia(Uri uri, String mediaType, String description): void
+        + onActivityResult(int requestCode, int resultCode, Intent data): void
+        + enterVideoDescription(Uri selectedMediaUri, String mediaType): void
+    }
+
+    class MediaFullScreen {
+        - VideoView videoView
+        - GestureDetector gestureDetector
+        - List<MediaItem> mediaList
+        - int position
+        - FirebaseAuth mAuth
+        - String anotherId
+        - FirebaseUser user
+        - DatabaseReference databaseRef
+        - TextView txtLikesAmount
+        - TextView txtDescription
+        - View draggableCardView
+        --
+        + onCreate(Bundle savedInstanceState): void
+        + setupTouchListener(): void
+        + navigateRight(): void
+        + navigateLeft(): void
+        + updateMediaView(): void
+        + onTouchEvent(MotionEvent event): boolean
+        + updateLikedStatus(CircleImageView btnStatus, int position): void
+        + toggleLikeStatus(CircleImageView btnStatus, int position): void
+        + isLiked(LikedStatusListener listener): void
+    }
+
+    interface LikedStatusListener {
+        + onStatusChecked(boolean isLiked): void
+    }
+
+    GalleryActivity --> MediaAdapter
+    GalleryActivity --> FirebaseAuth
+    GalleryActivity --> FirebaseUser
+    GalleryActivity --> FirebaseStorage
+    GalleryActivity --> StorageReference
+    GalleryActivity --> ProgressBar
+    GalleryActivity --> CardView
+
+    MediaFullScreen --> VideoView
+    MediaFullScreen --> GestureDetector
+    MediaFullScreen --> MediaItem
+    MediaFullScreen --> FirebaseAuth
+    MediaFullScreen --> FirebaseUser
+    MediaFullScreen --> DatabaseReference
+    MediaFullScreen --> TextView
+    MediaFullScreen --> View
+    MediaFullScreen --> CircleImageView
+    MediaFullScreen --> LikedStatusListener
+
+class MainActivity {
+        - static final int RC_SIGN_IN
+        - FirebaseAuth mAuth
+        - GoogleSignInClient mGoogleSignInClient
+        - DatabaseReference myRef
+        - View bmView
+        --
+        + onCreate(Bundle savedInstanceState): void
+        + onStart(): void
+        + checkCurrentUser(): void
+        + setupGoogleSignIn(): void
+        + setupNetworkConnection(): void
+        + setupButtons(): void
+        + authenticateBiometric(): void
+        + launchHomeActivity(): void
+        + signIn(): void
+        + onActivityResult(int requestCode, int resultCode, Intent data): void
+        + handleSignInResult(Task<GoogleSignInAccount> completedTask): void
+        + firebaseAuthWithGoogle(String idToken): void
+
+
+
+}
+
+
+    class CreateProfileActivity {
+        - Spinner spinnerAge
+        - Spinner spinnerHeight
+        - Spinner spinnerWeight
+        - static final int REQUEST_IMAGE_CAPTURE
+        - static final int REQUEST_GALLERY_PHOTO
+        - TextView btn_male
+        - TextView btn_female
+        - Button btn_next
+        - String name
+        - String gender
+        - int weight
+        - int height
+        - int age
+        - CircleImageView id_profile_image
+        - static final int SELECT_IMAGE_REQUEST_CODE
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - TextInputEditText edt_name
+        - boolean first_entrance
+        - DatabaseReference myRef
+        - Uri selectedImageUri
+        - static final int PERMISSIONS_REQUEST
+        --
+        + onCreate(Bundle savedInstanceState)
+        + loadCurrentUserDetails()
+        + requestPermissions()
+        + onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+        + uploadimage(Uri uri)
+        + getAge(): ArrayList<String>
+        + getHeight(): ArrayList<String>
+        + getWeight(): ArrayList<String>
+        + setupAddImageButton()
+        + openCamera()
+        + openGallery()
+        + onActivityResult(int requestCode, int resultCode, Intent data)
+        + saveBitmapToCache(Bitmap bitmap, Context context): Uri
+    }
+
+    class GeneralSettingsActivity {
+        - Spinner spnDailyActivity
+        - Spinner spnTarget
+        - Spinner spnMealNum
+        - Spinner spnExperience
+        - Spinner spnWeightTarget
+        - Button btnNext
+        - TextView txtSendToTimings
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        - UserGeneralInfo userNutritionInfo
+        - boolean isFirstEntrance
+        - Switch switchAppSec
+        - Switch switchMealTimings
+        - Switch switchDailyTip
+        - RelativeLayout relativeLayoutWeightTarget
+        - RelativeLayout relativeLayoutExperience
+        --
+        + onCreate(Bundle savedInstanceState)
+        + initializeViews()
+        + setupSpinners()
+        + setSpinnerAdapter(Spinner spinner, ArrayList<String> options)
+        + setupButtonListeners()
+        + processSettings()
+        + saveUserSettings()
+        + handleSecuritySettings()
+        + updateDatabaseWithUserInfo()
+        + navigateToHome()
+        + updateBeginWeightIfTargetChanged()
+        + setupWorkoutRecommendations()
+        + getDailyActivityOptions(): ArrayList<String>
+        + getMealNumOptions(): ArrayList<String>
+        + getTargetOptions(): ArrayList<String>
+        + getExperienceOptions(): ArrayList<String>
+        + loadCurrentDetails()
+        + updateWeightTargetOptions()
+        + setSpinnerValue(Spinner spinner, String value)
+    }
+
+    class UserTimesActivity {
+        --
+        + onCreate(Bundle savedInstanceState)
+        + getitemstosettime(int meal_num): ArrayList<String>
+        + setuprecyclerview(ArrayList<String> arrayList)
+    }
+
+    CreateProfileActivity *-- Spinner
+    CreateProfileActivity *-- TextView
+    CreateProfileActivity *-- Button
+    CreateProfileActivity *-- String
+    CreateProfileActivity *-- int
+    CreateProfileActivity *-- CircleImageView
+    CreateProfileActivity *-- Uri
+    CreateProfileActivity *-- FirebaseAuth
+    CreateProfileActivity *-- FirebaseUser
+    CreateProfileActivity *-- FirebaseDatabase
+    CreateProfileActivity *-- TextInputEditText
+    CreateProfileActivity *-- boolean
+    CreateProfileActivity *-- DatabaseReference
+    CreateProfileActivity *-- Context
+    CreateProfileActivity *-- Bitmap
+
+    GeneralSettingsActivity *-- Spinner
+    GeneralSettingsActivity *-- Button
+    GeneralSettingsActivity *-- TextView
+    GeneralSettingsActivity *-- FirebaseAuth
+    GeneralSettingsActivity *-- FirebaseUser
+    GeneralSettingsActivity *-- FirebaseDatabase
+    GeneralSettingsActivity *-- DatabaseReference
+    GeneralSettingsActivity *-- UserGeneralInfo
+    GeneralSettingsActivity *-- boolean
+    GeneralSettingsActivity *-- Switch
+    GeneralSettingsActivity *-- RelativeLayout
+    GeneralSettingsActivity *-- ArrayList
+
+    UserTimesActivity *-- RecyclerView
+    UserTimesActivity *-- ArrayList
+    UserTimesActivity *-- Time_Recycler_View_Adapter
+
+
+
+    class DetailWorkout {
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - Spinner spnDay1
+        - Spinner spnDay2
+        - DatabaseReference myRef
+        - ArrayList<Muscle> muscles
+        --
+        + onCreate(Bundle savedInstanceState)
+        + setSpinners()
+        + setSpinnersSelection(String type)
+        + setUpRv(ArrayList<Muscle> muscles, String type)
+    }
+
+    class ExpandSetsActivity {
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        - int positionofparent
+        --
+        + onCreate(Bundle savedInstanceState)
+        + converttoset(Exercise exercise)
+        + setuprecyclerview(ArrayList<Exercise> exercises)
+        + onitemclick(int position)
+        + onitemclick(int position, TextView t, RecyclerView r)
+        + onclick(int position)
+    }
+
+    class SportFragment {
+        --
+        + onCreate(Bundle savedInstanceState)
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+        + replacefragemant(Fragment fragment)
+    }
+
+    class WorkoutFragment {
+        - FirebaseAuth mAuth
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        - ArrayList<Exercise> exercises
+        - CircleImageView btn_timer
+        - CircleImageView btn_heart_monitor
+        - RecyclerView recyclerView
+        - static ArrayList<Exercise> todaysWorkout
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + setuprecyclerview(ArrayList<Exercise> exercises)
+        + getCurrentDayInNumber(): int
+        + onitemclick(int position)
+        + onitemclick(int position, TextView t, RecyclerView r)
+        + onclick(int position)
+    }
+
+    class WorkoutSettingsFragment {
+        - FirebaseAuth mAuth
+        - TextView title
+        - FirebaseUser user
+        - FirebaseDatabase database
+        - DatabaseReference myRef
+        - ListView listView
+        - CompactCalendarView compactCalendarView
+        - String selectedWorkoutType
+        - int color
+        - Calendar calendar2
+        - int[] colors
+        - SimpleDateFormat sdf2
+        - static final long DOUBLE_CLICK_TIME_DELTA
+        --
+        + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+        + setOnClickDate(View view, ArrayList<Workout> workouts)
+        + addEventToCalendar(Date date, String workoutType, int color)
+        + showEventDetailsDialog(Event event, Date dateClicked)
+        + removeEventFromDate(Date dateClicked)
+        + onMonthScroll2(View view, ArrayList<Workout> workouts, Date firstDayOfNewMonth)
+        + loadEventsForSpecificDayInMonth(Date firstDayOfNewMonth, int dayOfWeek, String eventType, int color)
+        + checkAndAddEvent(String target, Calendar cal, Date date, int dayOfWeek, String eventType, int color)
+        + updateLV(ArrayList<String> workoutNum)
+        + onItemClick(AdapterView<?> parent, View view, int position, long id)
+        + addNewWorkoutType(int workout_num_length)
+        + createNewWorkout(int workout_num_length, int dayOne, Integer dayTwo)
+        + onItemSingleClick(String item)
+    }
+
+    class Muscle {
+        - String name
+        - ArrayList<Exercise> exercises
+        --
+        + Muscle(String name)
+        + Muscle(String name, ArrayList<Exercise> exercises)
+        + getName(): String
+        + getExercises(): ArrayList<Exercise>
+    }
+
+    class Exercise {
+        - String name
+        - String type
+        - String muscleGroup
+        - String equipment
+        - String instructions
+        - int sets
+        --
+        + Exercise(String name, String type, String muscleGroup, String equipment, String instructions)
+        + getName(): String
+        + getType(): String
+        + getMuscleGroup(): String
+        + getEquipment(): String
+        + getInstructions(): String
+        + getSets(): int
+    }
+
+    class Workout {
+        - String type
+        - String name
+        - ArrayList<Muscle> muscles
+        - ArrayList<Integer> day
+        --
+        + Workout(String type, String name, ArrayList<Muscle> muscles, ArrayList<Integer> day)
+        + getType(): String
+        + getName(): String
+        + getMuscles(): ArrayList<Muscle>
+        + getDay(): ArrayList<Integer>
+    }
+     class RvForRequests {
+            - FirebaseAuth mAuth
+            - FirebaseUser user
+            - DatabaseReference myRef
+            - ArrayList<String> requestsUserUids
+            - Context mContext
+            - LayoutInflater mInflater
+            --
+            + RvForRequests(Context context, ArrayList<String> requests)
+            + onCreateViewHolder(ViewGroup parent, int viewType): RvForRequests.ViewHolder
+            + onBindViewHolder(RvForRequests.ViewHolder holder, int position): void
+            + handleAccept(String currentUserUid, RvForRequests.ViewHolder holder): void
+            + updateFriendList(String targetUserId, DatabaseReference reference, ArrayList<String> friends, String userIdToAdd): void
+            + removeRequest(int position): void
+            + handleRefuse(int position): void
+            + getItemCount(): int
+
+
+        class RvForRequests.ViewHolder {
+            - Button btnAccept
+            - Button btnRefuse
+            - TextView txtUserAsking
+            --
+            + ViewHolder(View itemView)
+
+
+    }
+
+
+    DetailWorkout *-- FirebaseAuth
+    DetailWorkout *-- FirebaseUser
+    DetailWorkout *-- FirebaseDatabase
+    DetailWorkout *-- Spinner
+    DetailWorkout *-- DatabaseReference
+    DetailWorkout *-- Muscle
+
+    ExpandSetsActivity *-- FirebaseAuth
+    ExpandSetsActivity *-- FirebaseUser
+    ExpandSetsActivity *-- FirebaseDatabase
+    ExpandSetsActivity *-- DatabaseReference
+    ExpandSetsActivity *-- Exercise
+    ExpandSetsActivity *-- ArrayList
+
+    SportFragment *-- Fragment
+    SportFragment *-- BottomNavigationView
+
+    WorkoutFragment *-- FirebaseAuth
+    WorkoutFragment *-- FirebaseUser
+    WorkoutFragment *-- FirebaseDatabase
+    WorkoutFragment *-- DatabaseReference
+    WorkoutFragment *-- CircleImageView
+    WorkoutFragment *-- RecyclerView
+    WorkoutFragment *-- Exercise
+
+    WorkoutSettingsFragment *-- FirebaseAuth
+    WorkoutSettingsFragment *-- FirebaseUser
+    WorkoutSettingsFragment *-- FirebaseDatabase
+    WorkoutSettingsFragment *-- DatabaseReference
+    WorkoutSettingsFragment *-- ListView
+    WorkoutSettingsFragment *-- CompactCalendarView
+    WorkoutSettingsFragment *-- String
+    WorkoutSettingsFragment *-- int
+    WorkoutSettingsFragment *-- Calendar
+    WorkoutSettingsFragment *-- SimpleDateFormat
+
+    Muscle *-- Exercise
+
+    Workout *-- Muscle
+    Workout *-- ArrayList
+    Workout *-- Integer
+
+
+
+    class TimerActivity {
+        - Button startButton
+        - TextView txtProgress
+        - Intent intent
+        - String initialTime
+        - boolean isReceiverRegistered
+        - ProgressBar progressBar
+        - long totalTimeInMilliseconds
+        - Button btnMinus
+        - Button btnPlus
+        - Button btnStart
+        - Button[] buttons
+        - Button btnCancel
+        - ConstraintLayout constraintLayout
+        --
+        + onCreate(Bundle savedInstanceState)
+        + checkScheduleExactAlarmPermission()
+        + setButtonListeners()
+        + setTime(String timeString)
+        + updateTime(int deltaSeconds)
+        + initializeUI()
+        + convertTimeTextToMilliseconds(String timeText): long
+        + broadcastReceiver: BroadcastReceiver
+        + onPause()
+        + onResume()
+        + onStop()
+        + updateUI(Intent intent)
+    }
+
+    class TimerService {
+        + static final String BROADCAST_ACTION
+        - Handler handler
+        - boolean isReceiverRegistered
+        - long endTime
+        - long timeLeftWhenStopped
+        - Intent intent
+        + onCreate()
+        + onStartCommand(Intent intent, int flags, int startId): int
+        - startTimer(long countdownTime)
+        - cancelTimer()
+        - Runnable sendUpdatesToUI
+        + continueTimer()
+        - pauseTimer()
+        + onDestroy()
+        + onBind(Intent intent): IBinder
+    }
+
+    TimerActivity --> TimerService
+    TimerService *-- Handler
+    TimerService *-- Alarms
+
+
+
+    class Alarms {
+        + setImmediateAlarm(Context context, String message)
+    }
+
+
+
+    class Color {
+        +Purple80: Color
+        +PurpleGrey80: Color
+        +Pink80: Color
+        +Purple40: Color
+        +PurpleGrey40: Color
+        +Pink40: Color
+    }
+
+    class MyApplicationTheme {
+        +MyApplicationTheme(
+            darkTheme: Boolean = isSystemInDarkTheme(),
+            dynamicColor: Boolean = true,
+            content: @Composable () -> Unit
+        )
+    }
+
+    class Typography {
+        +bodyLarge: TextStyle
+        -Typography()
+    }
+
+    class TextStyle {
+        +fontFamily: FontFamily
+        +fontWeight: FontWeight
+        +fontSize: sp
+        +lineHeight: sp
+        +letterSpacing: sp
+    }
+
+    class FontFamily {
+        +Default: FontFamily
+    }
+
+    class FontWeight {
+        +Normal: FontWeight
+        +Medium: FontWeight
+    }
+
+    class sp {
+        +sp(value: Int): sp
+    }
+
+    MyApplicationTheme --> Color
+    MyApplicationTheme --> Typography
+    Typography --> TextStyle
+    TextStyle --> FontFamily
+    TextStyle --> FontWeight
+    TextStyle --> sp
+    sp --> FontWeight
+
+
+
+    class BaseActivity {
+        - ProgressDialog? mProgressDialog
+        - String? mPermission
+        - permissionLauncher: ActivityResultLauncher<String>
+        --
+        + requestPermission(permission: String): Boolean
+        + isPermissionGranted(isGranted: Boolean, permission: String?)
+        + makeFullScreen()
+        + showLoading(message: String)
+        + hideLoading()
+        + showSnackbar(message: String)
+    }
+     class TaskAdapter {
+            - ArrayList<Task> items
+            - Context context
+            - FirebaseAuth mAuth
+            - FirebaseUser user
+            - FirebaseDatabase database
+            - DatabaseReference myRef
+            - DatabaseReference myRef2
+            --
+            + TaskAdapter(Context context, ArrayList<Task> items)
+            + onCreateViewHolder(ViewGroup parent, int viewType): TaskAdapter.ViewHolder
+            + onBindViewHolder(TaskAdapter.ViewHolder holder, int position): void
+            + highlightCardView(CardView cardView): void
+            + checkAndHandleTaskCompletion(Task task, int position, String taskTimesOver): void
+            + isFirstTime(): boolean
+            + getItemCount(): int
+            + addDaysToDate(String dateString, int days): String
+
+
+        class TaskAdapter.ViewHolder {
+            - TextView titleTextView
+            - TextView descriptionTextView
+            - TextView countTextView
+            - TextView endDateTextView
+            - CustomPathView customPathView
+            - CircleImageView circleImageView
+            - CardView cardView
+            --
+            + ViewHolder(View itemView)
+
+    }
+
+
+    class ColorPickerAdapter {
+        - Context context
+        - LayoutInflater inflater
+        - List<Int> colorPickerColors
+        - OnColorPickerClickListener onColorPickerClickListener
+        --
+        + onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+        + onBindViewHolder(holder: ViewHolder, position: Int)
+        + getItemCount(): Int
+        + setOnColorPickerClickListener(onColorPickerClickListener: OnColorPickerClickListener)
+        --
+        interface OnColorPickerClickListener {
+            + onColorPickerClickListener(colorCode: Int)
+        }
+        class ViewHolder {
+            - View colorPickerView
+
+
+        + getDefaultColors(context: Context): List<Int>
+    }
+
+    class EditImageActivity {
+        - FirebaseStorage storage
+        - ProgressDialog? progressDialog
+        - StorageReference storageRef
+        - PhotoEditor mPhotoEditor
+        - PhotoEditorView mPhotoEditorView
+        - PropertiesBSFragment mPropertiesBSFragment
+        - ShapeBSFragment mShapeBSFragment
+        - ShapeBuilder mShapeBuilder
+        - EmojiBSFragment mEmojiBSFragment
+        - StickerBSFragment mStickerBSFragment
+        - TextView mTxtCurrentTool
+        - Typeface mWonderFont
+        - RecyclerView mRvTools
+        - RecyclerView mRvFilters
+        - EditingToolsAdapter mEditingToolsAdapter
+        - FilterViewAdapter mFilterViewAdapter
+        - ConstraintLayout mRootView
+        - ConstraintSet mConstraintSet
+        - boolean mIsFilterVisible
+        - FileSaveHelper mSaveFileHelper
+        - Uri? mSaveImageUri
+        --
+        + onCreate(savedInstanceState: Bundle?)
+        + handleIntentImage(source: ImageView)
+        + initViews()
+        + onEditTextChangeListener(rootView: View, text: String, colorCode: Int)
+        + onAddViewListener(viewType: ViewType, numberOfAddedViews: Int)
+        + onRemoveViewListener(viewType: ViewType, numberOfAddedViews: Int)
+        + onStartViewChangeListener(viewType: ViewType)
+        + onStopViewChangeListener(viewType: ViewType)
+        + onTouchSourceImage(event: MotionEvent)
+        + onClick(view: View)
+        + onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+        + enterVideoDescription()
+        + shareImage()
+        + buildFileProviderUri(uri: Uri): Uri
+        + saveImage(videoDescription: String)
+        + getBitmapFromUri(uri: Uri): Bitmap?
+        + showProgressDialog()
+        + uploadImageToFirebase(bitmap: Bitmap, videoDescription: String)
+        + onColorChanged(colorCode: Int)
+        + onOpacityChanged(opacity: Int)
+        + onShapeSizeChanged(shapeSize: Int)
+        + onShapePicked(shapeType: ShapeType)
+        + onEmojiClick(emojiUnicode: String)
+        + onStickerClick(bitmap: Bitmap)
+        + isPermissionGranted(isGranted: Boolean, permission: String?)
+        + showSaveDialog()
+        + onToolSelected(toolType: ToolType)
+        + showBottomSheetDialogFragment(fragment: BottomSheetDialogFragment?)
+        + showFilter(isVisible: Boolean)
+        + onBackPressed()
+        + onFilterSelected(photoFilter: PhotoFilter)
+    }
+
+    class EmojiBSFragment {
+        - EmojiListener? mEmojiListener
+        - ArrayList<String> emojisList
+        --
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+        + setupRecyclerView(view: View)
+        + loadEmojis(): ArrayList<String>
+        + convertEmoji(emoji: String): String
+        + setEmojiListener(emojiListener: EmojiListener?)
+        --
+        interface EmojiListener {
+            + onEmojiClick(emojiUnicode: String)
+        }
+        class EmojiAdapter {
+            + onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+            + onBindViewHolder(holder: ViewHolder, position: Int)
+            + getItemCount(): Int
+            --
+            class ViewHolder {
+                - TextView txtEmoji
+
+
+    }
+
+    class FileSaveHelper {
+        - ContentResolver mContentResolver
+        - ExecutorService? executor
+        - MutableLiveData<FileMeta> fileCreatedResult
+        - OnFileCreateResult? resultListener
+        --
+        + addObserver(lifecycleOwner: LifecycleOwner)
+        + release()
+        + createFile(fileNameToSave: String, listener: OnFileCreateResult?)
+        + getEditedImageUri(fileNameToSave: String, newImageDetails: ContentValues, imageCollection: Uri): Uri
+        + buildUriCollection(newImageDetails: ContentValues): Uri
+        + notifyThatFileIsNowPubliclyAvailable(contentResolver: ContentResolver)
+        --
+        private class FileMeta {
+            - boolean isCreated
+            - String? filePath
+            - Uri? uri
+            - String? error
+            - ContentValues? imageDetails
+            + updateResult(result: Boolean, filePath: String?, error: String?, uri: Uri?, newImageDetails: ContentValues?)
+            + isSdkHigherThan28(): Boolean
+
+    }
+
+    class EditingToolsAdapter {
+        - OnItemSelected mOnItemSelected
+        - MutableList<ToolModel> mToolList
+        --
+        + onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+        + onBindViewHolder(holder: ViewHolder, position: Int)
+        + getItemCount(): Int
+        --
+        internal class ToolModel {
+            - String mToolName
+            - int mToolIcon
+            - ToolType mToolType
+
+
+        class ViewHolder {
+            - ImageView imgToolIcon
+            - TextView txtTool
+
+    }
+
+    class FilterViewAdapter {
+        - FilterListener mFilterListener
+        - MutableList<Pair<String, PhotoFilter>> mPairList
+        --
+        + onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+        + onBindViewHolder(holder: ViewHolder, position: Int)
+        + getItemCount(): Int
+        --
+        class ViewHolder {
+            - ImageView mImageFilterView
+            - TextView mTxtFilterName
+
+    }
+
+    class PropertiesBSFragment {
+        - Properties? mProperties
+        --
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+        + onViewCreated(view: View, savedInstanceState: Bundle?)
+        + setPropertiesChangeListener(properties: Properties?)
+        + onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean)
+        + onStartTrackingTouch(seekBar: SeekBar)
+        + onStopTrackingTouch(seekBar: SeekBar)
+        --
+        interface Properties {
+            + onColorChanged(colorCode: Int)
+            + onOpacityChanged(opacity: Int)
+            + onShapeSizeChanged(shapeSize: Int)
+
+    }
+
+    class ShapeBSFragment {
+        - Properties? mProperties
+        --
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
+        + onViewCreated(view: View, savedInstanceState: Bundle?)
+        + setPropertiesChangeListener(properties: Properties?)
+        + onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean)
+        + onStartTrackingTouch(seekBar: SeekBar)
+        + onStopTrackingTouch(seekBar: SeekBar)
+        --
+        interface Properties {
+            + onColorChanged(colorCode: Int)
+            + onOpacityChanged(opacity: Int)
+            + onShapeSizeChanged(shapeSize: Int)
+            + onShapePicked(shapeType: ShapeType)
+
+    }
+
+    class StickerBSFragment {
+        - StickerListener? mStickerListener
+        - BottomSheetCallback mBottomSheetBehaviorCallback
+        --
+        + setStickerListener(stickerListener: StickerListener?)
+        + setupDialog(dialog: Dialog, style: Int)
+        --
+        class StickerAdapter {
+            + onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
+            + onBindViewHolder(holder: ViewHolder, position: Int)
+            + getItemCount(): Int
+            --
+            class ViewHolder {
+                - ImageView imgSticker
+
+
+
+        + stickerPathList: array<String>
+    }
+
+    class TextEditorDialogFragment {
+        - EditText mAddTextEditText
+        - TextView mAddTextDoneTextView
+        - InputMethodManager mInputMethodManager
+        - int mColorCode
+        - TextEditorListener? mTextEditorListener
+        --
+        + onStart()
+        + onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+        + onViewCreated(view: View, savedInstanceState: Bundle?)
+        + setOnTextEditorListener(textEditorListener: TextEditorListener)
+        --
+        + show(appCompatActivity: AppCompatActivity, inputText: String = "", @ColorInt colorCode: Int = ContextCompat.getColor(appCompatActivity, R.color.white)): TextEditorDialogFragment
+    }
+
+    enum ToolType {
+        SHAPE, TEXT, ERASER, FILTER, EMOJI, STICKER
+    }
+
+    EditImageActivity *-- FirebaseStorage
+    EditImageActivity *-- ProgressDialog
+    EditImageActivity *-- StorageReference
+    EditImageActivity *-- PhotoEditor
+    EditImageActivity *-- PhotoEditorView
+    EditImageActivity *-- PropertiesBSFragment
+    EditImageActivity *-- ShapeBSFragment
+    EditImageActivity *-- ShapeBuilder
+    EditImageActivity *-- EmojiBSFragment
+    EditImageActivity *-- StickerBSFragment
+    EditImageActivity *-- TextView
+    EditImageActivity *-- Typeface
+    EditImageActivity *-- RecyclerView
+    EditImageActivity *-- EditingToolsAdapter
+    EditImageActivity *-- FilterViewAdapter
+    EditImageActivity *-- ConstraintLayout
+    EditImageActivity *-- ConstraintSet
+    EditImageActivity *-- FileSaveHelper
+    EditImageActivity *-- Uri
+    EditImageActivity *-- MotionEvent
+    EditImageActivity *-- Intent
+    EditImageActivity *-- PhotoFilter
+
+    ColorPickerAdapter *-- OnColorPickerClickListener
+    ColorPickerAdapter *-- ViewHolder
+    ColorPickerAdapter *-- List
+
+    EmojiBSFragment *-- EmojiListener
+    EmojiBSFragment *-- ArrayList
+    EmojiBSFragment *-- EmojiAdapter
+    EmojiAdapter *-- ViewHolder
+    ViewHolder *-- TextView
+
+    FileSaveHelper *-- MutableLiveData
+    FileSaveHelper *-- OnFileCreateResult
+    FileSaveHelper *-- FileMeta
+    FileSaveHelper *-- ContentResolver
+    FileSaveHelper *-- ExecutorService
+    FileSaveHelper *-- LifecycleOwner
+    FileSaveHelper *-- ContentValues
+
+    EditingToolsAdapter *-- OnItemSelected
+    EditingToolsAdapter *-- ToolModel
+    EditingToolsAdapter *-- ViewHolder
+    EditingToolsAdapter *-- ImageView
+    EditingToolsAdapter *-- TextView
+    EditingToolsAdapter *-- MutableList
+
+    FilterViewAdapter *-- FilterListener
+    FilterViewAdapter *-- ViewHolder
+    FilterViewAdapter *-- ImageView
+    FilterViewAdapter *-- TextView
+    FilterViewAdapter *-- MutableList
+    FilterViewAdapter *-- PhotoFilter
+    FilterViewAdapter *-- Pair
+
+    PropertiesBSFragment *-- Properties
+    PropertiesBSFragment *-- View
+    PropertiesBSFragment *-- RecyclerView
+    PropertiesBSFragment *-- SeekBar
+
+    ShapeBSFragment *-- Properties
+    ShapeBSFragment *-- View
+    ShapeBSFragment *-- RecyclerView
+    ShapeBSFragment *-- SeekBar
+    ShapeBSFragment *-- RadioGroup
+
+    StickerBSFragment *-- StickerListener
+    StickerBSFragment *-- BottomSheetCallback
+    StickerBSFragment *-- Dialog
+    StickerBSFragment *-- View
+    StickerBSFragment *-- ViewGroup
+    StickerBSFragment *-- LayoutInflater
+    StickerBSFragment *-- Bundle
+    StickerBSFragment *-- RecyclerView
+    StickerBSFragment *-- GridLayoutManager
+    StickerBSFragment *-- StickerAdapter
+    StickerAdapter *-- ViewHolder
+    StickerAdapter *-- Glide
+    ViewHolder *-- ImageView
+    ViewHolder *-- Drawable
+    ViewHolder *-- Transition
+    ViewHolder *-- CustomTarget
+    StickerBSFragment *-- array
+
+    TextEditorDialogFragment *-- EditText
+    TextEditorDialogFragment *-- TextView
+    TextEditorDialogFragment *-- InputMethodManager
+    TextEditorDialogFragment *-- TextEditorListener
+    TextEditorDialogFragment *-- ColorDrawable
+    TextEditorDialogFragment *-- Bundle
+    TextEditorDialogFragment *-- View
+    TextEditorDialogFragment *-- ViewGroup
+    TextEditorDialogFragment *-- LayoutInflater
+    TextEditorDialogFragment *-- RecyclerView
+    TextEditorDialogFragment *-- LinearLayoutManager
+    TextEditorDialogFragment *-- ColorPickerAdapter
+    TextEditorDialogFragment *-- Context
+    TextEditorDialogFragment *-- AppCompatActivity
+    TextEditorDialogFragment *-- ContextCompat
+    TextEditorDialogFragment *-- R
+    GroupFragment --> MessageAdapter
+    UserExpandChatFragment --> MessageAdapter
+    ChatFragment --> MessageAdapter
+
+
+    class MessageAdapter {
+        - List<Message> messageList
+        - Context context
+        - FirebaseUser user
+        - ChatViewModel viewModel
+        - FirebaseDatabase database
+        - int lastUnreadMessagePosition
+        - boolean isGroup
+        --
+        + MessageAdapter(Context context, List<Message> messageList, boolean isGroup)
+        + onCreateViewHolder(ViewGroup parent, int viewType): MyViewHolder
+        + onBindViewHolder(MyViewHolder holder, int position): void
+        + getItemCount(): int
+        + getLastUnreadMessagePosition(): int
+        + setUserDetails(String userId, TextView sentByTextView): void
+        + formatTimestamp(long timestamp): String
+        --
+        class MyViewHolder {
+            - LinearLayout leftChatView
+            - LinearLayout rightChatView
+            - TextView leftChatTextView
+            - TextView rightChatTextView
+            - TextView sentByRight
+            - TextView sentByLeft
+            - TextView sentTimeRight
+            - TextView sentTimeLeft
+            - ImageView leftImage
+            - ImageView rightImage
+            - CircleImageView leftImageProfile
+            - CircleImageView rightImageProfile
+            --
+            + MyViewHolder(View itemView)
+            + configureView(Message message, boolean isCurrentUser, int position): void
+            + configureRightView(Message message, int position): void
+            + configureLeftView(Message message, int position): void
+
+    }
+    class EditorsActivity {
+            + onCreate(Bundle savedInstanceState): void
+            - replaceFragment(Fragment fragment): void
+        }
+
+
+        EditorsActivity --> Bundle
+        EditorsActivity --> BottomNavigationView
+        EditorsActivity --> Fragment
+        EditorsActivity --> FragmentManager
+        EditorsActivity --> FragmentTransaction
+        EditorsActivity --> ExerciseEditorFragment
+        EditorsActivity --> ProductsEditorFragment
+
+    MessageAdapter --> Message
+    MessageAdapter --> FirebaseUser
+    MessageAdapter --> ChatViewModel
+    MessageAdapter --> FirebaseDatabase
+    MessageAdapter --> LinearLayout
+    MessageAdapter --> TextView
+    MessageAdapter --> ImageView
+    MessageAdapter --> CircleImageView
+
+    package com.example.omrifit.fragments {
+        class GroupFragment
+        class UserExpandChatFragment
+        class ChatFragment
+    }
+
+    GroupFragment --> MessageAdapter
+    UserExpandChatFragment --> MessageAdapter
+    ChatFragment --> MessageAdapter
+
+    class MuscleAdapter {
+        - ArrayList<Muscle> muscleList
+        - Context context
+        - RecyclerView recyclerView
+        --
+        + MuscleAdapter(Context context, ArrayList<Muscle> muscleList)
+        + onCreateViewHolder(ViewGroup parent, int viewType): MuscleViewHolder
+        + onBindViewHolder(MuscleViewHolder holder, int position): void
+        + getItemCount(): int
+        --
+        class MuscleViewHolder {
+            - TextView muscleNameTextView
+            --
+            + MuscleViewHolder(View itemView)
+
+    }
+
+    MuscleAdapter --> Muscle
+    MuscleAdapter --> Context
+    MuscleAdapter --> RecyclerView
+    MuscleAdapter --> TextView
+
+
+    class Muscle {
+        - String name
+        - ArrayList<Exercise> exercises
+        --
+        + Muscle(String name)
+        + Muscle(String name, ArrayList<Exercise> exercises)
+        + getName(): String
+        + getExercises(): ArrayList<Exercise>
+
+    Muscle *-- Exercise
+}
+
+
+    class LoginActivity {
+        - EditText edtMail
+        - EditText edtPass
+        - Button btnContinue
+        - TextView txtForgotPassword
+        - ImageView imgOmri
+        - FirebaseAuth mAuth
+        - Intent intent
+        --
+        + onCreate(Bundle savedInstanceState): void
+        - initializeUI(): void
+        - setupPasswordFocusChangeListener(): void
+        - setupForgotPasswordListener(): void
+        - setupLoginButtonListener(): void
+        - loginUser(): void
+        - handleSuccessfulLogin(): void
+    }
+
+    LoginActivity --> EditText
+    LoginActivity --> Button
+    LoginActivity --> TextView
+    LoginActivity --> ImageView
+    LoginActivity --> FirebaseAuth
+    LoginActivity --> Intent
+    LoginActivity --> Bundle
+    LoginActivity --> Toast
+    LoginActivity --> FirebaseUser
+    LoginActivity --> Task
+    LoginActivity --> AuthResult
+    LoginActivity --> OnCompleteListener
+    LoginActivity --> CreateProfileActivity
+    LoginActivity --> MainActivity
+MuscleAdapter --> ExerciseAdapter
+DetailWorkout --> MuscleAdapter
+ExpandSetsActivity --> MuscleAdapter
+WorkoutFragment --> MuscleAdapter
+ExerciseFragment -->Exersice_Recyclerview_Adapter
+ExpandSetsActivity -->Exersice_Recyclerview_Adapter
+FriendsFragment -->Rv_Adapter_for_user_item
+GroupFragment --> Rv_Adapter_for_user_item
+EditImageActivity -->ToolType
+EditingToolsAdapter -->ToolType
+ExerciseFragment--> Recyclerview_Interface
+WorkoutFragment--> Recyclerview_Interface
+class SetsExercisesAdapter {
+        - ArrayList<Exercise> exerciseList
+        - Context context
+        --
+        + SetsExercisesAdapter(Context context, ArrayList<Exercise> exerciseList)
+        + onCreateViewHolder(ViewGroup parent, int viewType): SetsExerciseViewHolder
+        + onBindViewHolder(SetsExerciseViewHolder holder, int position): void
+        + getItemCount(): int
+        --
+        class SetsExerciseViewHolder {
+            - TextView exerciseNameTextView
+            --
+            + SetsExerciseViewHolder(View itemView)
+
+    }
+
+    SetsExercisesAdapter --> Exercise
+    SetsExercisesAdapter --> Context
+    SetsExercisesAdapter --> TextView
+
+SetsExercisesAdapter -->Recyclerview_Interface
+NetworkConnection --> Omrifit
+
+PexelsService --> NetworkConnection
+
+TrainYourBrainActivity --> NetworkConnection
+
+CommunityMainFragment --> NetworkConnection
+FriendsFragment --> NetworkConnection
+GroupFragment --> NetworkConnection
+RequestsFragment --> NetworkConnection
+
+Ad_BodyMeasure --> NetworkConnection
+ExerciseAdapter --> NetworkConnection
+Exersice_Recyclerview_Adapter --> NetworkConnection
+MediaAdapter --> NetworkConnection
+MessageAdapter --> NetworkConnection
+Rv_Adapter_for_user_item --> NetworkConnection
+
+FirstFragment --> NetworkConnection
+SecondFragment --> NetworkConnection
+ChatFragment --> NetworkConnection
+ExerciseFragment --> NetworkConnection
+ProfileFragment --> NetworkConnection
+
+BodyMeasure --> NetworkConnection
+Exercise --> NetworkConnection
+Group --> NetworkConnection
+Meal --> NetworkConnection
+MediaItem --> NetworkConnection
+Message --> NetworkConnection
+ProfileInfo --> NetworkConnection
+Task --> NetworkConnection
+Workout --> NetworkConnection
+
+AlarmReceiver --> NetworkConnection
+AlarmService --> NetworkConnection
+AlarmUtils --> NetworkConnection
+
+ChatViewModel --> NetworkConnection
+ChatData --> NetworkConnection
+
+FirebaseAuth --> NetworkConnection
+FirebaseUser --> NetworkConnection
+FirebaseDatabase --> NetworkConnection
+DatabaseReference --> NetworkConnection
+
+ValueEventListener --> NetworkConnection
+DataSnapshot --> NetworkConnection
+DatabaseError --> NetworkConnection
+
+UserExpand --> NetworkConnection
+UserExpandChatFragment --> NetworkConnection
+UserExpandGallery --> NetworkConnection
+
+BodyMeasureActivity --> NetworkConnection
+FatMeasureFragment --> NetworkConnection
+MyModelPredictorActivity --> NetworkConnection
+PulseMonitorActivity --> NetworkConnection
+WeightMeasureFragment --> NetworkConnection
+
+GalleryActivity --> NetworkConnection
+MediaFullScreen --> NetworkConnection
+
+CreateProfileActivity --> NetworkConnection
+GeneralSettingsActivity --> NetworkConnection
+UserTimesActivity --> NetworkConnection
+
+DetailWorkout --> NetworkConnection
+ExpandSetsActivity --> NetworkConnection
+SportFragment --> NetworkConnection
+WorkoutFragment --> NetworkConnection
+WorkoutSettingsFragment --> NetworkConnection
+
+TimerActivity --> NetworkConnection
+TimerService --> NetworkConnection
+Alarms --> NetworkConnection
+
+ColorPickerAdapter --> NetworkConnection
+EditImageActivity --> NetworkConnection
+EmojiBSFragment --> NetworkConnection
+FileSaveHelper --> NetworkConnection
+EditingToolsAdapter --> NetworkConnection
+FilterViewAdapter --> NetworkConnection
+PropertiesBSFragment --> NetworkConnection
+ShapeBSFragment --> NetworkConnection
+StickerBSFragment --> NetworkConnection
+TextEditorDialogFragment --> NetworkConnection
+
+FriendsFragment --> ProfileInfo
+GroupFragment --> ProfileInfo
+RequestsFragment --> ProfileInfo
+CommunityMainFragment --> NetworkConnection
+FriendsFragment --> NetworkConnection
+GroupFragment --> NetworkConnection
+RequestsFragment --> NetworkConnection
+BodyMeasureActivity --> NetworkConnection
+FatMeasureFragment --> NetworkConnection
+MyModelPredictorActivity --> NetworkConnection
+PulseMonitorActivity --> NetworkConnection
+WeightMeasureFragment --> NetworkConnection
+HomePageActivity --> NetworkConnection
+
+BodyMeasureActivity --> FirebaseAuth
+BodyMeasureActivity --> FirebaseUser
+BodyMeasureActivity --> FirebaseDatabase
+BodyMeasureActivity --> DatabaseReference
+
+FriendsFragment --> FirebaseAuth
+FriendsFragment --> FirebaseUser
+FriendsFragment --> FirebaseDatabase
+FriendsFragment --> DatabaseReference
+
+GroupFragment --> FirebaseAuth
+GroupFragment --> FirebaseUser
+GroupFragment --> FirebaseDatabase
+GroupFragment --> DatabaseReference
+
+RequestsFragment --> FirebaseAuth
+RequestsFragment --> FirebaseUser
+RequestsFragment --> FirebaseDatabase
+RequestsFragment --> DatabaseReference
+
+DetailWorkout --> RecyclerView
+ExerciseFragment --> RecyclerView
+WorkoutFragment --> RecyclerView
+
+ExerciseFragment --> FirebaseAuth
+ExerciseFragment --> FirebaseUser
+ExerciseFragment --> FirebaseDatabase
+ExerciseFragment --> DatabaseReference
+
+WorkoutFragment --> FirebaseAuth
+WorkoutFragment --> FirebaseUser
+WorkoutFragment --> FirebaseDatabase
+WorkoutFragment --> DatabaseReference
+
+GeneralSettingsActivity --> FirebaseAuth
+GeneralSettingsActivity --> FirebaseUser
+GeneralSettingsActivity --> FirebaseDatabase
+GeneralSettingsActivity --> DatabaseReference
+
+ProfileFragment --> FirebaseAuth
+ProfileFragment --> FirebaseUser
+ProfileFragment --> FirebaseDatabase
+ProfileFragment --> DatabaseReference
+
+MyModelPredictorActivity --> MyModelPredictor
+FatMeasureFragment --> MyModelPredictor
+
+EditImageActivity --> PhotoEditor
+EditImageActivity --> PhotoEditorView
+
+EditImageActivity --> PropertiesBSFragment
+EditImageActivity --> ShapeBSFragment
+EditImageActivity --> EmojiBSFragment
+EditImageActivity --> StickerBSFragment
+EditImageActivity --> TextView
+EditImageActivity --> Typeface
+EditImageActivity --> RecyclerView
+EditImageActivity --> EditingToolsAdapter
+EditImageActivity --> FilterViewAdapter
+EditImageActivity --> ConstraintLayout
+EditImageActivity --> ConstraintSet
+EditImageActivity --> FileSaveHelper
+EditImageActivity --> Uri
+EditImageActivity --> MotionEvent
+EditImageActivity --> Intent
+EditImageActivity --> PhotoFilter
+
+ChatViewModel --> ChatData
+interface LikedStatusListener
+MediaAdapter --> LikedStatusListener
+MediaFullScreen --> LikedStatusListener
+
+interface Properties
+PropertiesBSFragment --> Properties
+ShapeBSFragment --> Properties
+
+interface EmojiListener
+EmojiBSFragment --> EmojiListener
+
+interface StickerListener
+StickerBSFragment --> StickerListener
+
+interface OnColorPickerClickListener
+ColorPickerAdapter --> OnColorPickerClickListener
+class MessageAdapter {
+    - List<Message> messageList
+    - Context context
+    - FirebaseUser user
+    - ChatViewModel viewModel
+    - FirebaseDatabase database
+    - int lastUnreadMessagePosition
+    - boolean isGroup
+    --
+    + MessageAdapter(Context context, List<Message> messageList, boolean isGroup)
+    + onCreateViewHolder(ViewGroup parent, int viewType): MyViewHolder
+    + onBindViewHolder(MyViewHolder holder, int position): void
+    + getItemCount(): int
+    + getLastUnreadMessagePosition(): int
+    + setUserDetails(String userId, TextView sentByTextView): void
+    + formatTimestamp(long timestamp): String
+    --
+    class MyViewHolder {
+        - LinearLayout leftChatView
+        - LinearLayout rightChatView
+        - TextView leftChatTextView
+        - TextView rightChatTextView
+        - TextView sentByRight
+        - TextView sentByLeft
+        - TextView sentTimeRight
+        - TextView sentTimeLeft
+        - ImageView leftImage
+        - ImageView rightImage
+        - CircleImageView leftImageProfile
+        - CircleImageView rightImageProfile
+        --
+        + MyViewHolder(View itemView)
+        + configureView(Message message, boolean isCurrentUser, int position): void
+        + configureRightView(Message message, int position): void
+        + configureLeftView(Message message, int position): void
+
+}
+CommunityMainFragment --> View
+CommunityMainFragment --> Bundle
+
+FriendsFragment --> ProfileInfo
+
+GroupFragment --> Message
+GroupFragment --> ProfileInfo
+
+RequestsFragment --> String
+
+Ad_BodyMeasure --> BodyMeasure
+
+ExerciseAdapter --> Exercise
+
+Exersice_Recyclerview_Adapter --> Exercise
+
+MediaAdapter --> MediaItem
+
+Rv_Adapter_for_user_item --> ProfileInfo
+
+FirstFragment --> View
+FirstFragment --> Bundle
+
+SecondFragment --> View
+SecondFragment --> Bundle
+
+ChatFragment --> View
+ChatFragment --> Bundle
+ChatFragment --> Message
+ChatFragment --> ProfileInfo
+
+ExerciseFragment --> Exercise
+
+ProfileFragment --> ProfileInfo
+
+BodyMeasureActivity --> BodyMeasure
+
+FatMeasureFragment --> View
+FatMeasureFragment --> Bundle
+
+MyModelPredictorActivity --> MyModelPredictor
+
+PulseMonitorActivity --> Sensor
+PulseMonitorActivity --> SensorEvent
+
+WeightMeasureFragment --> BodyMeasure
+
+GalleryActivity --> MediaItem
+
+MediaFullScreen --> MediaItem
+
+CreateProfileActivity --> ProfileInfo
+
+GeneralSettingsActivity --> UserGeneralInfo
+
+UserTimesActivity --> Time_Recycler_View_Adapter
+
+DetailWorkout --> Muscle
+
+ExpandSetsActivity --> Exercise
+
+WorkoutFragment --> Exercise
+
+WorkoutSettingsFragment --> Workout
+
+SetsExercisesAdapter --> Exercise
+
+EditingToolsAdapter --> ToolType
+
+FilterViewAdapter --> PhotoFilter
+
+Omrifit --> Context
+TrainYourBrainActivity --> NetworkConnection
+TrainYourBrainActivity --> Retrofit
+TrainYourBrainActivity --> GsonConverterFactory
+TrainYourBrainActivity --> PexelsService
+TrainYourBrainActivity --> Glide
+TrainYourBrainActivity --> ChatViewModel
+
+NetworkConnection --> LiveData
+
+PexelsService --> Retrofit
+PexelsService --> PexelsResponse
+
+PexelsResponse --> List
+PexelsResponse.Photo --> Src
+
+CommunityMainFragment --> FragmentManager
+CommunityMainFragment --> FragmentTransaction
+
+FriendsFragment --> Rv_Adapter_for_user_item
+FriendsFragment --> DatabaseReference
+FriendsFragment --> FirebaseAuth
+FriendsFragment --> FirebaseUser
+
+GroupFragment --> Rv_Adapter_for_user_item
+GroupFragment --> DatabaseReference
+GroupFragment --> FirebaseAuth
+GroupFragment --> FirebaseUser
+GroupFragment --> FirebaseDatabase
+
+RequestsFragment --> FirebaseAuth
+RequestsFragment --> FirebaseUser
+RequestsFragment --> FirebaseDatabase
+RequestsFragment --> DatabaseReference
+
+ProfileFragment --> FirebaseAuth
+ProfileFragment --> FirebaseUser
+ProfileFragment --> FirebaseDatabase
+ProfileFragment --> DatabaseReference
+
+GalleryActivity --> FirebaseAuth
+GalleryActivity --> FirebaseUser
+GalleryActivity --> FirebaseStorage
+GalleryActivity --> StorageReference
+GalleryActivity --> ProgressBar
+GalleryActivity --> CardView
+
+MediaFullScreen --> FirebaseAuth
+MediaFullScreen --> FirebaseUser
+MediaFullScreen --> DatabaseReference
+MediaFullScreen --> TextView
+MediaFullScreen --> CircleImageView
+MediaFullScreen --> GestureDetector
+
+ExpandSetsActivity --> FirebaseAuth
+ExpandSetsActivity --> FirebaseUser
+ExpandSetsActivity --> FirebaseDatabase
+ExpandSetsActivity --> DatabaseReference
+Exersice_Recyclerview_Adapter --> Exercise
+ExerciseAdapter --> Exercise
+ExerciseAdapter --> DatabaseReference
+
+DetailWorkout --> FirebaseAuth
+DetailWorkout --> FirebaseUser
+DetailWorkout --> FirebaseDatabase
+DetailWorkout --> Spinner
+DetailWorkout --> DatabaseReference
+
+ExpandSetsActivity --> Exercise
+ExpandSetsActivity --> FirebaseAuth
+ExpandSetsActivity --> FirebaseUser
+ExpandSetsActivity --> FirebaseDatabase
+ExpandSetsActivity --> DatabaseReference
+
+SportFragment --> Fragment
+
+WorkoutFragment --> FirebaseAuth
+WorkoutFragment --> FirebaseUser
+WorkoutFragment --> FirebaseDatabase
+WorkoutFragment --> DatabaseReference
+WorkoutFragment --> CircleImageView
+WorkoutFragment --> RecyclerView
+
+WorkoutSettingsFragment --> FirebaseAuth
+WorkoutSettingsFragment --> FirebaseUser
+WorkoutSettingsFragment --> FirebaseDatabase
+WorkoutSettingsFragment --> DatabaseReference
+WorkoutSettingsFragment --> ListView
+WorkoutSettingsFragment --> CompactCalendarView
+
+UserTimesActivity --> RecyclerView
+UserTimesActivity --> ArrayList
+
+BodyMeasureActivity --> RecyclerView
+BodyMeasureActivity --> Ad_BodyMeasure
+BodyMeasureActivity --> FirebaseAuth
+BodyMeasureActivity --> FirebaseUser
+BodyMeasureActivity --> FirebaseDatabase
+BodyMeasureActivity --> DatabaseReference
+
+FatMeasureFragment --> MyModelPredictor
+MyModelPredictorActivity --> MyModelPredictor
+
+WeightMeasureFragment --> RecyclerView
+WeightMeasureFragment --> Ad_BodyMeasure
+WeightMeasureFragment --> FirebaseAuth
+WeightMeasureFragment --> FirebaseUser
+WeightMeasureFragment --> FirebaseDatabase
+WeightMeasureFragment --> DatabaseReference
+
+PulseMonitorActivity --> SensorManager
+PulseMonitorActivity --> Sensor
+PulseMonitorActivity --> TextView
+
+GalleryActivity --> RecyclerView
+GalleryActivity --> MediaAdapter
+GalleryActivity --> FirebaseAuth
+GalleryActivity --> FirebaseUser
+GalleryActivity --> FirebaseStorage
+GalleryActivity --> StorageReference
+GalleryActivity --> ProgressBar
+GalleryActivity --> CardView
+
+MediaFullScreen --> VideoView
+MediaFullScreen --> GestureDetector
+MediaFullScreen --> MediaItem
+MediaFullScreen --> FirebaseAuth
+MediaFullScreen --> FirebaseUser
+MediaFullScreen --> DatabaseReference
+MediaFullScreen --> TextView
+MediaFullScreen --> CircleImageView
+MediaFullScreen --> View
+MediaFullScreen --> LikedStatusListener
+
+CreateProfileActivity --> Spinner
+CreateProfileActivity --> TextView
+CreateProfileActivity --> Button
+CreateProfileActivity --> CircleImageView
+CreateProfileActivity --> Uri
+CreateProfileActivity --> FirebaseAuth
+CreateProfileActivity --> FirebaseUser
+CreateProfileActivity --> FirebaseDatabase
+CreateProfileActivity --> TextInputEditText
+CreateProfileActivity --> DatabaseReference
+CreateProfileActivity --> Context
+CreateProfileActivity --> Bitmap
+
+GeneralSettingsActivity --> Spinner
+GeneralSettingsActivity --> Button
+GeneralSettingsActivity --> TextView
+GeneralSettingsActivity --> FirebaseAuth
+GeneralSettingsActivity --> FirebaseUser
+GeneralSettingsActivity --> FirebaseDatabase
+GeneralSettingsActivity --> DatabaseReference
+GeneralSettingsActivity --> UserGeneralInfo
+GeneralSettingsActivity --> Switch
+GeneralSettingsActivity --> RelativeLayout
+GeneralSettingsActivity --> ArrayList
+
+TimerActivity --> Button
+TimerActivity --> TextView
+TimerActivity --> Intent
+TimerActivity --> ProgressBar
+TimerActivity --> ConstraintLayout
+
+TimerService --> Handler
+TimerService --> Alarms
+
+BaseActivity --> ProgressDialog
+BaseActivity --> ActivityResultLauncher
+
+ColorPickerAdapter --> Context
+ColorPickerAdapter --> LayoutInflater
+ColorPickerAdapter --> OnColorPickerClickListener
+
+EditImageActivity --> FirebaseStorage
+EditImageActivity --> ProgressDialog
+EditImageActivity --> StorageReference
+EditImageActivity --> PhotoEditor
+EditImageActivity --> PhotoEditorView
+EditImageActivity --> PropertiesBSFragment
+EditImageActivity --> ShapeBSFragment
+EditImageActivity --> ShapeBuilder
+EditImageActivity --> EmojiBSFragment
+EditImageActivity --> StickerBSFragment
+EditImageActivity --> TextView
+EditImageActivity --> Typeface
+EditImageActivity --> RecyclerView
+EditImageActivity --> EditingToolsAdapter
+EditImageActivity --> FilterViewAdapter
+EditImageActivity --> ConstraintLayout
+EditImageActivity --> ConstraintSet
+EditImageActivity --> FileSaveHelper
+EditImageActivity --> Uri
+EditImageActivity --> MotionEvent
+EditImageActivity --> Intent
+EditImageActivity --> PhotoFilter
+
+EmojiBSFragment --> EmojiListener
+EmojiBSFragment --> ArrayList
+EmojiBSFragment --> EmojiAdapter
+
+FileSaveHelper --> MutableLiveData
+FileSaveHelper --> OnFileCreateResult
+FileSaveHelper --> ContentResolver
+FileSaveHelper --> ExecutorService
+FileSaveHelper --> LifecycleOwner
+FileSaveHelper --> ContentValues
+
+EditingToolsAdapter --> OnItemSelected
+EditingToolsAdapter --> ToolModel
+EditingToolsAdapter --> ViewHolder
+EditingToolsAdapter --> ImageView
+EditingToolsAdapter --> TextView
+EditingToolsAdapter --> MutableList
+
+FilterViewAdapter --> FilterListener
+FilterViewAdapter --> ViewHolder
+FilterViewAdapter --> ImageView
+FilterViewAdapter --> TextView
+FilterViewAdapter --> MutableList
+FilterViewAdapter --> PhotoFilter
+FilterViewAdapter --> Pair
+
+PropertiesBSFragment --> Properties
+PropertiesBSFragment --> View
+PropertiesBSFragment --> RecyclerView
+PropertiesBSFragment --> SeekBar
+
+ShapeBSFragment --> Properties
+ShapeBSFragment --> View
+ShapeBSFragment --> RecyclerView
+ShapeBSFragment --> SeekBar
+
+StickerBSFragment --> StickerListener
+StickerBSFragment --> BottomSheetCallback
+StickerBSFragment --> Dialog
+StickerBSFragment --> View
+StickerBSFragment --> ViewGroup
+StickerBSFragment --> LayoutInflater
+StickerBSFragment --> Bundle
+StickerBSFragment --> RecyclerView
+StickerBSFragment --> GridLayoutManager
+StickerBSFragment --> StickerAdapter
+StickerAdapter --> ViewHolder
+StickerAdapter --> Glide
+
+TextEditorDialogFragment --> EditText
+TextEditorDialogFragment --> TextView
+TextEditorDialogFragment --> InputMethodManager
+TextEditorDialogFragment --> TextEditorListener
+TextEditorDialogFragment --> ColorDrawable
+TextEditorDialogFragment --> Bundle
+TextEditorDialogFragment --> View
+TextEditorDialogFragment --> ViewGroup
+TextEditorDialogFragment --> LayoutInflater
+TextEditorDialogFragment --> RecyclerView
+TextEditorDialogFragment --> LinearLayoutManager
+TextEditorDialogFragment --> ColorPickerAdapter
+TextEditorDialogFragment --> Context
+TextEditorDialogFragment --> AppCompatActivity
+TextEditorDialogFragment --> ContextCompat
+TextEditorDialogFragment --> R
+
+MessageAdapter --> Message
+MessageAdapter --> FirebaseUser
+MessageAdapter --> ChatViewModel
+MessageAdapter --> FirebaseDatabase
+MessageAdapter --> LinearLayout
+MessageAdapter --> TextView
+MessageAdapter --> ImageView
+MessageAdapter --> CircleImageView
+
+MuscleAdapter --> Muscle
+MuscleAdapter --> Context
+MuscleAdapter --> RecyclerView
+MuscleAdapter --> TextView
+
+Rv_Adapter_for_user_item --> ProfileInfo
+Rv_Adapter_for_user_item --> Context
+Rv_Adapter_for_user_item --> Recyclerview_Interface
+
+ToolType --> EditingToolsAdapter
+ToolType --> EditImageActivity
+
+Exersice_Recyclerview_Adapter --> Recyclerview_Interface
+ExerciseFragment --> Recyclerview_Interface
+WorkoutFragment --> Recyclerview_Interface
+
+SetsExercisesAdapter --> Exercise
+SetsExercisesAdapter --> Context
+SetsExercisesAdapter --> TextView
+SetsExercisesAdapter --> Recyclerview_Interface
+HomeFragment --> FirebaseAuth
+HomeFragment --> FirebaseUser
+HomeFragment --> FirebaseDatabase
+HomeFragment --> DatabaseReference
+HomeFragment --> Exercise
+HomeFragment --> Utility
+HomeFragment --> TasksActivity
+HomeFragment --> GalleryActivity
+HomeFragment --> TrainYourBrainActivity
+HomeFragment --> TimerActivity
+HomeFragment --> PulseMonitorActivity
+HomeFragment --> EditorsActivity
+HomeFragment --> BodyMeasureActivity
+HomePageActivity --> FirebaseAuth
+HomePageActivity --> FirebaseUser
+HomePageActivity --> FirebaseDatabase
+HomePageActivity --> DatabaseReference
+HomePageActivity --> NetworkConnection
+HomePageActivity --> BottomNavigationView
+HomePageActivity --> BadgeDrawable
+HomePageActivity --> Snackbar
+HomePageActivity --> GeneralSettingsActivity
+HomePageActivity --> CreateProfileActivity
+WeightMeasureFragment --> FirebaseAuth
+WeightMeasureFragment --> FirebaseUser
+WeightMeasureFragment --> FirebaseDatabase
+WeightMeasureFragment --> DatabaseReference
+WeightMeasureFragment --> BodyMeasure
+WeightMeasureFragment --> Ad_BodyMeasure
+WeightMeasureFragment --> FloatingActionButton
+WorkoutFragment --> FirebaseAuth
+WorkoutFragment --> FirebaseUser
+WorkoutFragment --> FirebaseDatabase
+WorkoutFragment --> DatabaseReference
+WorkoutFragment --> Exercise
+WorkoutFragment --> CircleImageView
+WorkoutFragment --> RecyclerView
+WorkoutFragment --> TimerActivity
+WorkoutFragment --> PulseMonitorActivity
+WorkoutFragment --> SetsExercisesAdapter
+WorkoutFragment --> ArrayList
+WorkoutFragment --> FirebaseAuth
+WorkoutFragment --> FirebaseUser
+WorkoutFragment --> FirebaseDatabase
+WorkoutFragment --> DatabaseReference
+WorkoutFragment --> Exercise
+WorkoutFragment --> CircleImageView
+WorkoutFragment --> RecyclerView
+WorkoutFragment --> TimerActivity
+WorkoutFragment --> PulseMonitorActivity
+WorkoutFragment --> SetsExercisesAdapter
+WorkoutFragment --> ArrayList
+WorkoutSettingsFragment --> FirebaseAuth
+WorkoutSettingsFragment --> FirebaseUser
+WorkoutSettingsFragment --> FirebaseDatabase
+WorkoutSettingsFragment --> DatabaseReference
+WorkoutSettingsFragment --> ListView
+WorkoutSettingsFragment --> CompactCalendarView
+WorkoutSettingsFragment --> Workout
+WorkoutSettingsFragment --> Event
+WorkoutSettingsFragment --> SimpleDateFormat
+WorkoutSettingsFragment --> Date
+WorkoutSettingsFragment --> ArrayList
+ChatFragment --> FirebaseUser
+ChatFragment --> FirebaseDatabase
+ChatFragment --> DatabaseReference
+ChatFragment --> Message
+ChatFragment --> MessageAdapter
+ChatFragment --> ProfileInfo
+ChatFragment --> RecyclerView
+ChatFragment --> EditText
+ChatFragment --> String
+ChatFragment --> ArrayList
+GroupFragment --> RecyclerView
+GroupFragment --> EditText
+GroupFragment --> ArrayList
+GroupFragment --> MessageAdapter
+GroupFragment --> FirebaseAuth
+GroupFragment --> FirebaseUser
+GroupFragment --> FirebaseDatabase
+GroupFragment --> DatabaseReference
+GroupFragment --> Button
+GroupFragment --> CardView
+GroupFragment --> Bitmap
+GroupFragment --> ImageButton
+GroupFragment --> TextView
+GroupFragment --> ConstraintLayout
+GroupFragment --> ImageView
+GroupFragment --> LinearLayout
+FriendsFragment --> RecyclerView
+FriendsFragment --> EditText
+FriendsFragment --> Rv_Adapter_for_user_item
+FriendsFragment --> DatabaseReference
+FriendsFragment --> ArrayList
+FriendsFragment --> View
+FriendsFragment --> FirebaseAuth
+FriendsFragment --> FirebaseUser
+RequestsFragment --> FirebaseAuth
+RequestsFragment --> FirebaseUser
+RequestsFragment --> FirebaseDatabase
+RequestsFragment --> DatabaseReference
+RequestsFragment --> ArrayList
+RequestsFragment --> RecyclerView
+class WorkoutFragment {
+    - FirebaseAuth mAuth
+    - FirebaseUser user
+    - FirebaseDatabase database
+    - DatabaseReference myRef
+    - ArrayList<Exercise> exercises
+    - CircleImageView btn_timer
+    - CircleImageView btn_heart_monitor
+    - RecyclerView recyclerView
+    - static ArrayList<Exercise> todaysWorkout
+    --
+    + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+    + setuprecyclerview(ArrayList<Exercise> exercises)
+    + getCurrentDayInNumber(): int
+    + onitemclick(int position)
+    + onitemclick(int position, TextView t, RecyclerView r)
+    + onclick(int position)
+}
+
+WorkoutFragment --> FirebaseAuth
+WorkoutFragment --> FirebaseUser
+WorkoutFragment --> FirebaseDatabase
+WorkoutFragment --> DatabaseReference
+WorkoutFragment --> CircleImageView
+WorkoutFragment --> RecyclerView
+WorkoutFragment --> Exercise
+WorkoutFragment --> TimerActivity
+WorkoutFragment --> PulseMonitorActivity
+WorkoutFragment --> SetsExercisesAdapter
+WorkoutFragment --> Recyclerview_Interface
+class WorkoutSettingsFragment {
+    - FirebaseAuth mAuth
+    - TextView title
+    - FirebaseUser user
+    - FirebaseDatabase database
+    - DatabaseReference myRef
+    - ListView listView
+    - CompactCalendarView compactCalendarView
+    - String selectedWorkoutType
+    - int color
+    - Calendar calendar2
+    - int[] colors
+    - SimpleDateFormat sdf2
+    - static final long DOUBLE_CLICK_TIME_DELTA
+    --
+    + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+    + setOnClickDate(View view, ArrayList<Workout> workouts)
+    + addEventToCalendar(Date date, String workoutType, int color)
+    + showEventDetailsDialog(Event event, Date dateClicked)
+    + removeEventFromDate(Date dateClicked)
+    + onMonthScroll2(View view, ArrayList<Workout> workouts, Date firstDayOfNewMonth)
+    + loadEventsForSpecificDayInMonth(Date firstDayOfNewMonth, int dayOfWeek, String eventType, int color)
+    + checkAndAddEvent(String target, Calendar cal, Date date, int dayOfWeek, String eventType, int color)
+    + updateLV(ArrayList<String> workoutNum)
+    + onItemClick(AdapterView<?> parent, View view, int position, long id)
+    + addNewWorkoutType(int workout_num_length)
+    + createNewWorkout(int workout_num_length, int dayOne, Integer dayTwo)
+    + onItemSingleClick(String item)
+}
+
+WorkoutSettingsFragment --> FirebaseAuth
+WorkoutSettingsFragment --> FirebaseUser
+WorkoutSettingsFragment --> FirebaseDatabase
+WorkoutSettingsFragment --> DatabaseReference
+WorkoutSettingsFragment --> ListView
+WorkoutSettingsFragment --> CompactCalendarView
+WorkoutSettingsFragment --> Calendar
+WorkoutSettingsFragment --> SimpleDateFormat
+WorkoutSettingsFragment --> Workout
+WorkoutSettingsFragment --> ArrayList
+class ChatFragment {
+    - RecyclerView recyclerView
+    - EditText messageEditText
+    - FirebaseUser user
+    - FirebaseDatabase database
+    - DatabaseReference myRef
+    - List<Message> messageList
+    - MessageAdapter messageAdapter
+    - String anotherId
+    --
+    + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+    + initializeUI(View view): void
+    + loadMessages(): void
+    + sendMessage(): void
+    + scrollToLastUnreadMessage(): void
+    + setupRecyclerView(ArrayList<Message> messages): void
+    + getAnotherUserProfileInfo(String userId): void
+}
+
+ChatFragment --> RecyclerView
+ChatFragment --> EditText
+ChatFragment --> FirebaseUser
+ChatFragment --> FirebaseDatabase
+ChatFragment --> DatabaseReference
+ChatFragment --> Message
+ChatFragment --> MessageAdapter
+class GroupFragment {
+    - RecyclerView recyclerView
+    - RecyclerView rv_group_members
+    - EditText message_edt_text
+    - ArrayList<Message> messageList
+    - MessageAdapter messageAdapter
+    - ArrayList<ProfileInfo> groupMembers
+    - FirebaseAuth mAuth
+    - FirebaseUser user
+    - FirebaseDatabase database
+    - DatabaseReference groupRef
+    - DatabaseReference myRef
+    - Button suggestion1
+    - Button suggestion2
+    - Button suggestion3
+    - Button leaveGroup
+    - CardView cd_group
+    - Bitmap bitmapToSend
+    - ImageButton addImageButton
+    - TextView groupName
+    - ConstraintLayout ctl
+    - ImageView imageView
+    - LinearLayout suggestionsLayout
+    --
+    + onCreate(@Nullable Bundle savedInstanceState): void
+    + onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState): View
+    + setUpRvForGroupMembers(ArrayList<ProfileInfo> profileInfos): void
+    + loadGroup(): void
+    + showSearchDialog(ArrayList<String> groups): void
+    + onCreateOptionsMenu(Menu menu, MenuInflater inflater): void
+    + addtochat(String response): void
+    + loadProfileInfo(String userId): void
+    + setuprecyclerview(ArrayList<Message> messageList): void
+    + scrollToLastUnreadMessage(): void
+    + suggest(ArrayList<Message> messageList): void
+    + setupAddImageButton(): void
+    + openCamera(): void
+    + openGallery(): void
+    + clear(): void
+    + onActivityResult(int requestCode, int resultCode, Intent data): void
+}
+
+GroupFragment --> RecyclerView
+GroupFragment --> EditText
+GroupFragment --> ArrayList
+GroupFragment --> MessageAdapter
+GroupFragment --> FirebaseAuth
+GroupFragment --> FirebaseUser
+GroupFragment --> FirebaseDatabase
+GroupFragment --> DatabaseReference
+GroupFragment --> Button
+GroupFragment --> CardView
+GroupFragment --> Bitmap
+GroupFragment --> ImageButton
+GroupFragment --> TextView
+GroupFragment --> ConstraintLayout
+GroupFragment --> ImageView
+GroupFragment --> LinearLayout
+WorkoutFragment --> PulseMonitorActivity
+WorkoutFragment --> TimerActivity
+WorkoutFragment --> FirebaseAuth
+WorkoutFragment --> FirebaseUser
+WorkoutFragment --> FirebaseDatabase
+WorkoutFragment --> DatabaseReference
+WorkoutFragment --> ArrayList : todaysWorkout
+WorkoutFragment --> Exercise
+WorkoutFragment --> SetsExercisesAdapter
+WorkoutFragment --> LinearLayoutManager
+WorkoutFragment --> Gson
+WorkoutFragment --> ExpandSetsActivity
+WorkoutFragment --> Recyclerview_Interface
+WorkoutFragment --> Glide
+WorkoutFragment --> ImageView
+WorkoutFragment --> TextView
+WorkoutSettingsFragment --> FirebaseAuth
+WorkoutSettingsFragment --> FirebaseUser
+WorkoutSettingsFragment --> FirebaseDatabase
+WorkoutSettingsFragment --> DatabaseReference
+WorkoutSettingsFragment --> ListView
+WorkoutSettingsFragment --> CompactCalendarView
+WorkoutSettingsFragment --> Spinner
+WorkoutSettingsFragment --> Calendar
+WorkoutSettingsFragment --> Event
+WorkoutSettingsFragment --> AlertDialog
+WorkoutSettingsFragment --> ArrayList
+WorkoutSettingsFragment --> Exercise
+WorkoutSettingsFragment --> Workout
+ChatFragment --> RecyclerView
+ChatFragment --> EditText
+ChatFragment --> FirebaseAuth
+ChatFragment --> FirebaseUser
+ChatFragment --> FirebaseDatabase
+ChatFragment --> DatabaseReference
+ChatFragment --> ArrayList
+ChatFragment --> MessageAdapter
+ChatFragment --> Message
+ChatFragment --> ProfileInfo
+ChatFragment --> Intent
+ChatFragment --> TextView
+GroupFragment --> RecyclerView
+GroupFragment --> EditText
+GroupFragment --> ArrayList
+GroupFragment --> MessageAdapter
+GroupFragment --> FirebaseAuth
+GroupFragment --> FirebaseUser
+GroupFragment --> FirebaseDatabase
+GroupFragment --> DatabaseReference
+GroupFragment --> Button
+GroupFragment --> CardView
+GroupFragment --> Bitmap
+GroupFragment --> ImageButton
+GroupFragment --> TextView
+GroupFragment --> ConstraintLayout
+GroupFragment --> ImageView
+GroupFragment --> LinearLayout
+GroupFragment --> Fragment
+GroupFragment --> ProfileInfo
+GroupFragment --> Dialog
+GroupFragment --> SearchDialog
+GroupFragment --> ExpandSetsActivity
+GroupFragment --> Camera
+GroupFragment --> Gallery
+GroupFragment --> AddImageButton
+class Chat {
+        - String prompt
+        - Bitmap bitmap
+        - boolean isFromUser
+    }
+
+    class ChatData {
+        + suspend getResponse(prompt: String): Chat
+        + suspend getResponseWithImage(prompt: String, bitmap: Bitmap): Chat
+    }
+
+    ChatData --> Chat
+    ChatData --> GenerativeModel
+    ChatData --> Dispatchers
+    ChatData --> BuildConfig
+    ChatData --> content
+    ChatData --> Bitmap
+ class CustomPathView {
+        - Paint paint
+        - int tasksCompleted
+        --
+        + CustomPathView(Context context, AttributeSet attrs)
+        + setTasksCompleted(int tasks): void
+        + init(): void
+        + onDraw(Canvas canvas): void
+    }
+
+    CustomPathView --> Paint
+    CustomPathView --> Path
+    CustomPathView --> Canvas
+    CustomPathView --> Context
+    CustomPathView --> AttributeSet
+    CustomPathView --> Color
+
+
+class Product {
+        + static final String PER_UNIT
+        + static final String PER_100G
+        - String name
+        - String measurementform
+        - int calories
+        - int protein
+        - int carbs
+        - int fat
+        --
+        + Product()
+        + Product(String name, String measurementForm, int calories, int protein, int carbs, int fat)
+        + getName(): String
+        + setName(String name): void
+        + getMeasurementform(): String
+        + setMeasurementform(String measurementform): void
+        + getCalories(): int
+        + setCalories(int calories): void
+        + getProtein(): int
+        + setProtein(int protein): void
+        + getCarbs(): int
+        + setCarbs(int carbs): void
+        + getFat(): int
+        + setFat(int fat): void
+    }
+
+class Time {
+        - int hours
+        - int minutes
+        --
+        + Time()
+        + Time(int hours, int minutes)
+        + getHours(): int
+        + setHours(int hours): void
+        + getMinutes(): int
+        + setMinutes(int minutes): void
+        + toString(): String
+
+    class ProductRecyclerViewAdapter {
+        - Context context
+        - List<Product> products
+        --
+        + ProductRecyclerViewAdapter(Context context, List<Product> products)
+        + onCreateViewHolder(ViewGroup parent, int viewType): ProductRecyclerViewAdapter.MyViewHolder
+        + onBindViewHolder(ProductRecyclerViewAdapter.MyViewHolder holder, int position): void
+        + getItemCount(): int
+    }
+
+    class ProductRecyclerViewAdapter.MyViewHolder {
+        - TextView txt_name
+        - TextView txt_protein
+        - TextView txt_fat
+        - TextView txt_calories
+        - PieChart pieChart
+        --
+        + MyViewHolder(View itemView)
+        + setupPieChart(Product product): void
+
+
+    ProductRecyclerViewAdapter *-- ProductRecyclerViewAdapter.MyViewHolder
+    ProductRecyclerViewAdapter.MyViewHolder *-- View
+    ProductRecyclerViewAdapter.MyViewHolder *-- TextView
+    ProductRecyclerViewAdapter.MyViewHolder *-- PieChart
+    ProductRecyclerViewAdapter *-- Context
+    ProductRecyclerViewAdapter *-- List
+    ProductRecyclerViewAdapter *-- Product
+}
+    TaskAdapter *-- TaskAdapter.ViewHolder
+        TaskAdapter.ViewHolder *-- View
+        TaskAdapter.ViewHolder *-- TextView
+        TaskAdapter.ViewHolder *-- CustomPathView
+        TaskAdapter.ViewHolder *-- CircleImageView
+        TaskAdapter.ViewHolder *-- CardView
+        TaskAdapter *-- ArrayList
+        TaskAdapter *-- FirebaseAuth
+        TaskAdapter *-- FirebaseUser
+        TaskAdapter *-- FirebaseDatabase
+        TaskAdapter *-- DatabaseReference
+        TaskAdapter *-- Context
+        TaskAdapter *-- Task
+         RvForRequests *-- RvForRequests.ViewHolder
+                RvForRequests.ViewHolder *-- View
+                RvForRequests.ViewHolder *-- Button
+                RvForRequests.ViewHolder *-- TextView
+                RvForRequests *-- Context
+                RvForRequests *-- LayoutInflater
+                RvForRequests *-- ArrayList
+                RvForRequests *-- FirebaseAuth
+                RvForRequests *-- FirebaseUser
+                RvForRequests *-- DatabaseReference
+                 MainActivity --> FirebaseAuth
+                    MainActivity --> GoogleSignInClient
+                    MainActivity --> DatabaseReference
+                    MainActivity --> View
+                    MainActivity --> Bundle
+                    MainActivity --> GoogleSignInAccount
+                    MainActivity --> Task
+                    MainActivity --> AuthCredential
+                    MainActivity --> BiometricPrompt
+                    MainActivity --> BiometricManager
+                    MainActivity --> Executor
+                    MainActivity --> Context
+                    MainActivity --> Intent
+                    MainActivity --> NetworkConnection
+                    MainActivity --> GoogleSignInOptions
+                    MainActivity --> FirebaseUser
+                    MainActivity --> DataSnapshot
+                    MainActivity --> DatabaseError
+                    MainActivity --> SignInButton
+                    MainActivity --> ValueEventListener
+                    MainActivity --> ProgressBar
+                    MainActivity --> ImageView
+                    MainActivity --> Glide
+                    MainActivity --> Button
+                    MainActivity --> FirebaseApp
+                    SignupActivity --> EditText
+                            SignupActivity --> Button
+                            SignupActivity --> FirebaseAuth
+                            SignupActivity --> ProgressDialog
+                            SignupActivity --> Handler
+                            SignupActivity --> ImageView
+                            SignupActivity --> Bundle
+                            SignupActivity --> FirebaseUser
+                            SignupActivity --> Intent
+                            SignupActivity --> SharedPreferences
+                            SignupActivity --> TextView
+                            SignupActivity --> SpannableString
+                            SignupActivity --> ClickableSpan
+                            SignupActivity --> View
+                            SignupActivity --> ViewGroup
+                            SignupActivity --> Toast
+                            SignupActivity --> TextPaint
+                            SignupActivity --> LinkMovementMethod
+                            SignupActivity --> CardView
+                            SignupActivity --> AppCompatActivity
+                            SignupActivity --> Objects
+                            SignupActivity --> Task
+                            SignupActivity --> DialogInterface
+                            TasksActivity --> FirebaseAuth
+                            TasksActivity --> FirebaseUser
+                            TasksActivity --> FirebaseDatabase
+                            TasksActivity --> DatabaseReference
+
+                            ExerciseEditorFragment --> FirebaseAuth
+                            ExerciseEditorFragment --> FirebaseUser
+                            ExerciseEditorFragment --> FirebaseDatabase
+                            ExerciseEditorFragment --> DatabaseReference
+
+                            ProductsEditorFragment --> FirebaseAuth
+                            ProductsEditorFragment --> FirebaseUser
+                            ProductsEditorFragment --> FirebaseDatabase
+                            ProductsEditorFragment --> DatabaseReference
+
+                            LoginActivity --> FirebaseAuth
+                            LoginActivity --> FirebaseUser
+                            LoginActivity --> FirebaseDatabase
+                            LoginActivity --> DatabaseReference
+
+                            CreateProfileActivity --> FirebaseAuth
+                            CreateProfileActivity --> FirebaseUser
+                            CreateProfileActivity --> FirebaseDatabase
+                            CreateProfileActivity --> DatabaseReference
+
+                            GeneralSettingsActivity --> FirebaseAuth
+                            GeneralSettingsActivity --> FirebaseUser
+                            GeneralSettingsActivity --> FirebaseDatabase
+                            GeneralSettingsActivity --> DatabaseReference
+                            GeneralSettingsActivity --> HomePageActivity
+CreateProfileActivity --> GeneralSettingsActivity
+CommunityMainFragment-->FriendsFragment
+CommunityMainFragment-->GroupFragment
+CommunityMainFragment-->RequestsFragment
+RequestsFragment-->RvForRequests
+GroupFragment-->MessageAdapter
+FriendsFragment-->Rv_Adapter_for_user_item
+HomePageActivity-->ChatFragment
+ProductRecyclerViewAdapter-->Product
+ProductsEditorFragment-->Product
+Time_Recycler_View_Adapter-->Time
+ProductRecyclerViewAdapter-->ProductCheckCallback
+@enduml
+
+
+

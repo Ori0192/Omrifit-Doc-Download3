@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Omrifit" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Base theme customization -->
+    </style>
+
+    <!-- Style for a dark colored button with light text -->
+    <style name="AppTheme.ColoredButton" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="AppTheme.ColoredButton2" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/blue</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <!-- Main 🎓 -->
+    <style name="Theme.Omrifit" parent="Base.Theme.Omrifit">
+        <!-- Use the colored button style as the default button style -->
+        <item name="buttonStyle">@style/AppTheme.ColoredButton</item>
+    </style>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/muscles">
+        <menu>
+    <item android:id="@+id/nav_deltoid" android:title="Deltoid" />
+    <item android:id="@+id/nav_biceps" android:title="Biceps" />
+    <item android:id="@+id/nav_triceps" android:title="Triceps" />
+    <item android:id="@+id/nav_pectoralis" android:title="Pectoralis Major" />
+    <item android:id="@+id/nav_latissimus" android:title="Latissimus Dorsi" />
+    <item android:id="@+id/nav_rectus_abdominis" android:title="Rectus Abdominis" />
+    <item android:id="@+id/nav_obliques" android:title="Obliques" />
+    <item android:id="@+id/nav_quadriceps" android:title="Quadriceps" />
+    <item android:id="@+id/nav_hamstrings" android:title="Hamstrings" />
+    <item android:id="@+id/nav_gastrocnemius" android:title="Gastrocnemius" />
+    <item android:id="@+id/nav_soleus" android:title="Soleus" />
+    <item android:id="@+id/nav_gluteus_maximus" android:title="Gluteus Maximus" />
+    <item android:id="@+id/nav_gluteus_medius" android:title="Gluteus Medius" />
+    <item android:id="@+id/nav_trapzius" android:title="Trapezius" />
+    <item android:id="@+id/nav_rhomboids" android:title="Rhomboids" />
+</menu>
+    </item>
+    <item android:title="@string/nutrtion">
+        <menu>
+            <item android:id="@+id/nav_carbs" android:title="carbs"/>
+            <item android:id="@+id/nav_fats" android:title="fats"/>
+            <item android:id="@+id/nav_proteins" android:title="protein"/>
+            <item android:id="@+id/calories" android:title="calories"/>
+        </menu>
+    </item>
+</menu>

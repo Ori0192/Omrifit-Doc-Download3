@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp"
+    android:background="@color/blueblack"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_session"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Session"
+                    android:textColor="@color/LigthTextCoor"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Reps Full Body"
+                    android:textColor="@color/white"
+                    android:textSize="38sp" />
+
+                <TextView
+                    android:id="@+id/txt_sets_for_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="sets"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:id="@+id/txt_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="TextView"
+                    android:textColor="@color/CPP"
+                    android:textSize="24sp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_name"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txt_estimated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="80 min, 90 kcal"
+                    android:textColor="@color/LigthTextCoor"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:id="@+id/txt_askOmri"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end"
+                    android:layout_margin="10dp"
+                    android:foregroundGravity="right"
+                    android:text="Ask Omri how to perform the exercise ->"
+                    android:textColor="@color/blue_color_picker"
+                    android:textSize="16sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:layout_gravity="right" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/img_done"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="end"
+                app:srcCompat="@drawable/ic_right_arrow" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>

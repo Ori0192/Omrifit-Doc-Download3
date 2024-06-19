@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk android:minSdkVersion="12" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.health.READ_HEART_RATE" />
+    <uses-permission android:name="android.permission.health.WRITE_HEART_RATE" />
+    <uses-permission android:name="android.permission.health.READ_STEPS" />
+    <uses-permission android:name="android.permission.health.WRITE_STEPS" /> <!-- Health Connect Permissions -->
+    <uses-permission android:name="android.permission.READ_HEALTH_DATA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_HEALTH_DATA" /> <!-- בדיקה אם Health Connect מותקן -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <queries>
+        <package android:name="com.google.android.apps.healthdata" />
+    </queries>
+
+    <application
+        android:name=".Omrifit"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/img_14"
+        android:label="Omrifit"
+        android:roundIcon="@drawable/img_14"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Omrifit"
+        tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="smart_reply" />
+
+        <activity
+            android:name=".sport.DetailWorkout"
+            android:exported="true" />
+<activity android:name=".TasksActivity" android:exported="true"/>
+
+        <activity
+            android:name=".TrainYourBrainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".media.GalleryActivity"
+            android:exported="true" />
+
+
+
+
+        <activity
+            android:name=".media.MediaFullScreen"
+            android:exported="true" /> <!-- <service android:name=".TimerActivity$TimerService" /> -->
+        <meta-data
+            android:name="firebase"
+            android:value="https://omrifit-firebase-504da-default-rtdb.firebaseio.com" />
+
+        <activity
+            android:name=".registration_and_login.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".photo_editor.EditImageActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter
+                android:label="@string/app_intent_name"
+                android:scheme="file"
+                tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="action_nextgen_edit" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+
+        </activity>
+
+
+        <!-- פעילות להצגת הצדקה להרשאות Health Connect -->
+        <!-- <activity -->
+        <!-- android:name=".PermissionsRationaleActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!--
+ For versions starting Android 14, create an activity alias to show the rationale
+             of Health Connect permissions once users click the privacy policy link.
+        -->
+        <!-- <activity-alias -->
+        <!-- android:name=".ViewPermissionUsageActivity" -->
+        <!-- android:exported="true" -->
+        <!-- android:permission="android.permission.START_VIEW_PERMISSION_USAGE" -->
+        <!-- android:targetActivity=".PermissionsRationaleActivity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" /> -->
+        <!-- <category android:name="android.intent.category.HEALTH_PERMISSIONS" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity-alias> -->
+
+        <activity
+            android:name=".sport.ExpandSetsActivity"
+            android:exported="true" />
+
+        <service
+            android:name=".TimerService"
+            android:exported="true" />
+
+        <activity
+            android:name=".settings.CreateProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".timer.TimerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".measures.BodyMeasureActivity"
+            android:exported="true" />
+        <activity
+            android:name=".registration_and_login.SignupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".registration_and_login.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".settings.GeneralSettingsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".fragments.HomePageActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".measures.PulseMonitorActivity"
+            android:exported="true" />
+        <activity
+            android:name=".settings.UserTimesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".friends_profile.UserExpand"
+            android:exported="true" />
+        <activity
+            android:name=".editors.EditorsActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.razorpay.CheckoutActivity"
+            android:exported="true"> <!-- Set this based on whether the activity is intended to be accessible from other apps -->
+            <!-- ... -->
+        </activity>
+
+        <receiver
+            android:name="com.razorpay.RzpTokenReceiver"
+            android:exported="true"> <!-- Same here, set based on the intended accessibility -->
+            <!-- ... -->
+        </receiver>
+    </application>
+
+</manifest>

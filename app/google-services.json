@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "642184120386",
+    "firebase_url": "https://omrifit-firebase-504da-default-rtdb.firebaseio.com",
+    "project_id": "omrifit-firebase-504da",
+    "storage_bucket": "omrifit-firebase-504da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642184120386:android:cda9911daf10124af745db",
+        "android_client_info": {
+          "package_name": "com.example.omrifit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642184120386-n2333g3piqhqh4be9tign9dqdivsbgku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.omrifit",
+            "certificate_hash": "eb2bc228963a88648a9d89a6d3e10d96b3c3723c"
+          }
+        },
+        {
+          "client_id": "642184120386-2eitqap82cvmmm6jo9jt9710r9ofaeav.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCINhYhWuVN_xreDuC7pKNKHK_wcQxG4SI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642184120386-2eitqap82cvmmm6jo9jt9710r9ofaeav.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

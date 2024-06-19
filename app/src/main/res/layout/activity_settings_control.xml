@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lavender">
+
+    <Button
+        android:id="@+id/btn_user_settings"
+        style="@android:style/Widget.DeviceDefault.Button.Colored"
+        android:layout_width="146dp"
+        android:layout_height="163dp"
+        android:layout_marginTop="100dp"
+        app:icon="@drawable/ic_person"
+        app:iconSize="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_workout_settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_nutrition_settings"
+        style="@android:style/Widget.DeviceDefault.Button.Colored"
+        android:layout_width="146dp"
+        android:layout_height="163dp"
+        app:icon="@drawable/baseline_food_bank_24"
+        app:iconSize="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_user_times"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_user_settings"
+        app:layout_constraintVertical_bias="0.35" />
+
+    <Button
+        android:id="@+id/btn_user_times"
+        style="@android:style/Widget.DeviceDefault.Button.Colored"
+        android:layout_width="146dp"
+        android:layout_height="163dp"
+        android:layout_marginEnd="40dp"
+        app:icon="@drawable/baseline_access_time_24"
+        app:iconSize="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_workout_settings"
+        app:layout_constraintVertical_bias="0.35" />
+
+    <Button
+        android:id="@+id/btn_workout_settings"
+        style="@android:style/Widget.DeviceDefault.Button.Colored"
+        android:layout_width="146dp"
+        android:layout_height="163dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="40dp"
+        app:icon="@drawable/baseline_fitness_center_24"
+        app:iconSize="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

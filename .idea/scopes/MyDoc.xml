@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="MyDoc" pattern="(lib:*..*||src:*..*||test:*..*)&amp;&amp;!src[omrifit.app.main]:com.example.omrifit.ChatResponseCallback&amp;&amp;!src[omrifit.app.main]:com.example.omrifit.fragments.ChatFragment" />
+</component>
